@@ -74,6 +74,25 @@ nlu:
     - میں [گجرات](city) میں ہوں
     - [چنیوٹ](city)
 
+- intent: telling_day
+  examples: |
+    - [پیر](day)
+    - [سوموار](day)
+    - [منگل](day)
+    - [بدھ](day)
+    - [جمعرات](day)
+    - [جمعہ](day)
+    - [ہفتہ](day)
+    - [اتور](day)
+    - [کل](day) کا
+    - [پر سوں](day) کا
+
+- intent: asking_temp
+  examples: |
+    - کم سے کم درجہ حرارت کیا ہوگا
+    - زیادہ سے زیادہ درجہ حرارت کیا ہوگا
+    - درجہ حرارت کتنا ہوگا
+
 - intent: affirm
   examples: |
     - yes

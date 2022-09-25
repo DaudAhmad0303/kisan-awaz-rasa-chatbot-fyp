@@ -28,3 +28,17 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
+
+- story: Asking about Minimum Temperature
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: asking_temp
+  - action: utter_ask_city_for_weather
+  - intent: telling_city
+  - action: utter_ask_day_for_weather
+  - intent: telling_day
+  - action: utter_tell_temp
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks
