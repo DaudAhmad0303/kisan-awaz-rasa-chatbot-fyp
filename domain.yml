@@ -1,0 +1,75 @@
+version: "2.0"
+
+intents:
+  - greet
+      use_entities: true
+  - goodbye
+      use_entities: true
+  - affirm
+      use_entities: true
+  - deny
+      use_entities: true
+  - mood_great
+      use_entities: true
+  - mood_unhappy
+      use_entities: true
+  - bot_challenge
+      use_entities: true
+  - thanks
+      use_entities: true
+  - telling_city
+      use_entities: true
+
+entities:
+  - city
+
+slots:
+  city:
+    type: rasa.shared.core.slots.text
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  
+  day:
+    type: rasa.shared.core.slots.text
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+
+responses:
+  utter_greet:
+  - text: "کسان آواز میں خوش آمد ید"
+    text: "آپ کس سروس کے متعلق جاننا چاہتے ہیں؟"
+
+  utter_ask_city_for_weather:
+  - text: "آپ کس شہر میں موجود ہیں؟"
+
+  utter_ask_day_for_weather:
+  - text: "آپ کو کس دن کے موسم کا حال جاننا ہے؟"
+
+  utter_ask_for_next:
+  - text: "کیا آپ نے کچھ اور معلوم کرنا ہے؟"
+
+  utter_thanks:
+  - text: "کسان آواز استعمال کرنے کا شکریہ"
+    text: "اللہ حافظ"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

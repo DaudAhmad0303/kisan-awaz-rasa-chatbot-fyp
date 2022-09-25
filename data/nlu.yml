@@ -1,0 +1,135 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - اسلام و علیکم
+    - ہائے
+    - ہیلو
+    - سلام
+    - السلام
+    - آداب
+    - السلام علیکم
+    - کیا چل رہا ہے
+    - کیسا چل رہا ہے
+    - کیسا چل رہا ہے
+    - صبح بخیر
+    - شام بخیر
+    - شام بخیر
+    - السلام علیکم پیارے
+    - السلام علیکم عزیز
+    - جناب،آپ کیسے ہیں؟
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: thanks
+  examples: |
+    - جزاک اللہ
+    - شکریہ
+    - مجھے کچھ اور نہیں جاننا ہے
+    - خدمات فراہم کرنے کیے  شکریہ
+    - نہیں
+    - نہیں شکریہ
+    - آپ کا شکریہ
+    - آپ سے مل کر بہت خوشی ہوئی
+    - آپ کی بہت مہربانی
+    - آپ کے اچھے الفاظ کا شکریہ
+    - آپ کے تعاون کا شکریہ
+
+- intent: goodbye
+  examples: |
+    - خدا حافظ
+    - نہیں، مہربانی
+    - نہیں، اللہ حافظ
+    - الوداع
+    - اللہ حافظ
+    - اللہ کے حوالے
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: telling_city
+  examples: |
+    - میں [حیدرآباد](city) میں ہوں
+    - میں [ساہیوال](city) میں موجود ہوں
+    - [سکھر](city)
+    - میں [گجرات](city) میں ہوں
+    - [چنیوٹ](city)
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
