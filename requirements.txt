@@ -1,0 +1,8 @@
+conda create -n env python=3.8
+pip install rasa==2.8.1
+pip install rasa-sdk==2.8.1
+pip install pymongo
+pip install pprint
+pip install python-Levenshtein
+pip install fuzzywuzzy
+pip install datetime
