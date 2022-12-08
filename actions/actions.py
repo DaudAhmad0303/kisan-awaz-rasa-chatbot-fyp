@@ -77,8 +77,8 @@ class ActionMornTemp(Action):
         
         # getting entity value of `city` and `day`
         print("action_utter_morn_temp is called")
-        received_city = next(tracker.get_latest_entity_values("city"), None)
-        received_day = next(tracker.get_latest_entity_values("day"), None)
+        received_city = next(tracker.get_latest_entity_values("city"), "لاہور")
+        received_day = next(tracker.get_latest_entity_values("day"), "آج")
         
         print(received_city)
         document = geoLocationsCollection.find_one({'city': received_city})
@@ -91,13 +91,17 @@ class ActionMornTemp(Action):
         
         collection2 = db2[received_city]
         
-        whole_JSON = collection2.find(
+        whole_JSON = collection2.find_one(
             {
                 "lat": latitude,
                 "lon": longitude,
             }
         )
+        # print(whole_JSON, type(whole_JSON))
+        
         day_temp = whole_JSON['daily'][0]['temp']['day']
+        
+        day_temp = round(float(day_temp) - 273.15, 2)
         
         # bot_response_to_send = "{} میں زیادہ سے زیادہ درجہ حرارت 20 ڈگری سینٹی گریڈ رہے گا، جبکہ کم سے کم درجہ حرارت {} ڈگری سینٹی گریڈ رہے گا۔"
         if day == 0:

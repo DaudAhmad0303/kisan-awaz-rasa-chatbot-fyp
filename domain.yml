@@ -9,9 +9,11 @@ intents:
   - mood_unhappy
   - bot_challenge
   - thanks
-  - telling_city
-  - telling_day
   - asking_morn_temp
+  - telling_city:
+      use_entities: true
+  - telling_day:
+      use_entities: true
 
 entities:
   - city
@@ -74,3 +76,5 @@ responses:
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+config:
+  store_entities_as_slots: true

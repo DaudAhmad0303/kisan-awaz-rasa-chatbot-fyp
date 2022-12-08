@@ -28,3 +28,5 @@ text = f"میں (city)[حیدرآباد] میں ہوں"
 text = f"my account number is [1234567891](account_number)"
 bot_response_to_send = f"{received_day} {most_matched_city} میں صبح کا درجہ حرارت {day_temp} ڈگری سینٹی گریڈ رہے گا۔"
 print(text)
+
+print(round(2.300004,3))
