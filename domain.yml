@@ -11,7 +11,7 @@ intents:
   - thanks
   - telling_city
   - telling_day
-  - asking_temp
+  - asking_morn_temp
 
 entities:
   - city
@@ -22,19 +22,26 @@ slots:
     type: text
     initial_value: null
     auto_fill: true
-    influence_conversation: true
   
+  morn_temp:
+    type: text
+    initial_value: null
+
   day:
     type: text
     initial_value: null
     auto_fill: true
-    influence_conversation: true
+
+actions:
+  - action_hello_world
+  - action_utter_morn_temp
 
 responses:
   utter_greet:
-  - text: |
-        کسان آواز میں خوش آمدید
-        آپ کس سروس کے متعلق جاننا چاہتے ہیں؟
+  - text: کسان آواز میں خوش آمدید
+  
+  utter_ask_for_service:
+  - text: "آپ کس سروس کے متعلق جاننا چاہتے ہیں؟"
 
   utter_ask_city_for_weather:
   - text: "آپ کس شہر میں موجود ہیں؟"
@@ -42,16 +49,11 @@ responses:
   utter_ask_day_for_weather:
   - text: "آپ کو کس دن کے موسم کا حال جاننا ہے؟"
 
-  utter_tell_temp:
-  - text: "زیادہ سے زیادہ درجہ حرارت ۳۰ ڈگری سینٹی گریڈ رہے گا، جبکہ کم سے کم درجہ حرارت ۲۸ ڈگری سینٹی گریڈ رہے گا۔"
-
   utter_ask_for_next:
   - text: "کیا آپ نے کچھ اور معلوم کرنا ہے؟"
 
   utter_thanks:
-  - text: |
-        کسان آواز استعمال کرنے کا شکریہ
-        اللہ حافظ
+  - text: "کسان آواز استعمال کرنے کا شکریہ۔ اللہ حافظ"
 
   utter_cheer_up:
   - text: "Here is something to cheer you up:"

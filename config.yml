@@ -37,6 +37,6 @@ policies:
     max_history: 5
     epochs: 100
   - name: TEDPolicy
-    max_history: 5
-    epochs: 100
+    max_history: 10
+    epochs: 200
     constrain_similarities: true
