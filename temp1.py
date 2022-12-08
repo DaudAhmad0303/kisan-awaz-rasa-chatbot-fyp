@@ -96,6 +96,9 @@ def relative_day_no(day_name, timestamp = datetime.now().timestamp()):
         day_no = week_days[day_en]
         return day_no
     
+    if day_name not in relative_day or day_name == None:
+        return 0
+    
     # # Get current TimeStamp
     # print("Current TimeStamp: ", datetime.now().timestamp())
     
@@ -113,9 +116,8 @@ def relative_day_no(day_name, timestamp = datetime.now().timestamp()):
     
     # # Get Time from TimeStamp
     # print("Time from TimeStamp: ", datetime.fromtimestamp(timestamp))
-    
-    if day_name not in relative_day or day_name == None:
-        return 0
+    return None
+
 
 
 if __name__ == "__main__":
