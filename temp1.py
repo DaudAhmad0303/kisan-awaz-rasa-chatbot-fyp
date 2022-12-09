@@ -1,6 +1,7 @@
 import requests
 from datetime import datetime, timedelta
 from pprint import pprint
+from actions.fuzzyString import get_matched_name
 # print(requests.post(
 #     "https://825c-39-62-43-117.in.ngrok.io",
 #     json= {
@@ -122,3 +123,5 @@ def relative_day_no(day_name, timestamp = datetime.now().timestamp()):
 
 if __name__ == "__main__":
     print(relative_day_no("اتوار"))
+    print(get_matched_name("لاہو", "city"))
+    print(get_matched_name("سومو", "day"))

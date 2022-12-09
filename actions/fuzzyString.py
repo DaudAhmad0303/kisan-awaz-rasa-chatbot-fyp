@@ -21,12 +21,12 @@ def get_matched_name(name :str, name_type: str, data = list()):
     data = list()
     if name_type == "city":
         # Reading the Cities files as list
-        with open("../CitiesList.txt", encoding='UTF-8') as file:
+        with open("CitiesList.txt", encoding='UTF-8') as file:
             for val in file.readlines():
                 data.append(val.strip())
     else:
         # Reading the Days files as list
-        with open("../DaysList.txt", encoding='UTF-8') as file:
+        with open("DaysList.txt", encoding='UTF-8') as file:
             for val in file.readlines():
                 data.append(val.strip())
     

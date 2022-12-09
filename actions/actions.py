@@ -15,7 +15,7 @@ from rasa_sdk.events import SlotSet
 import pymongo as mongo
 from datetime import datetime, timedelta
 from pprint import pprint
-from fuzzyString import get_matched_name
+from .fuzzyString import get_matched_name
 
 client = mongo.MongoClient("mongodb://localhost:27017")
 print(client)
@@ -179,14 +179,14 @@ class ActionMornTemp(Action):
         print(received_city)
         
         # Getting most matched day name with custom function
-        most_matched_day = get_matched_name(received_day, "day")
+        most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
         day_no_for_DB = relative_day_no(received_day)
         print(day_no_for_DB)
         
         # Getting most matched city name with custom function
-        most_matched_city = get_matched_name(received_city)
+        most_matched_city = get_matched_name(received_city, "city")[0]
         
         # Getting the GeoLocations' Document of `city` from Database
         document = geoLocationsCollection.find_one({'city': most_matched_city})
