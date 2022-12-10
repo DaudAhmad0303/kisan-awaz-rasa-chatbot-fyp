@@ -10,6 +10,7 @@ intents:
   - bot_challenge
   - thanks
   - asking_morn_temp
+  - asking_night_temp
   - telling_city:
       use_entities: true
   - telling_day:
@@ -28,6 +29,10 @@ slots:
   morn_temp:
     type: text
     initial_value: null
+  
+  night_temp:
+    type: text
+    initial_value: null
 
   day:
     type: text
@@ -37,6 +42,8 @@ slots:
 actions:
   - action_hello_world
   - action_utter_morn_temp
+  - action_utter_night_temp
+
 
 responses:
   utter_greet:
