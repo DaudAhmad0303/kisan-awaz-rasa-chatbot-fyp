@@ -7,6 +7,7 @@ from pprint import pprint
 import json
 import pymongo
 
+
 dotenv_path = Path("D:\Daud Ahmad\FYP\RASA Implementation\code\.env")
 load_dotenv(dotenv_path=dotenv_path)
 OPEN_WEATHER_MAP_API = getenv("OPEN_WEATHER_MAP_API")
@@ -16,7 +17,7 @@ client = pymongo.MongoClient("mongodb://localhost:27017")
 kisan_awaz_db = client["KisanAwaz"]
 
 def insertData(cities_geolocation_df):
-    """This Module inserts the weather data of city fetched from `openweathermapapi` in mongodb
+    """This Module inserts the weather data of cities, fetched from `openweathermapapi` in mongodb
 
     Args:
         cities_geolocation_df (DataFrame.Pandas): Pandas DataFrame containing following fields:
@@ -26,72 +27,40 @@ def insertData(cities_geolocation_df):
     # create collection for WeatherForecast
     weather_forecast_collection = kisan_awaz_db["WeatherForecast"]
     
+    # Fetching documents from weather_forecast_collection, if there inserted previously and 
+    # storing all the cities name in a single list
     previous_docs = weather_forecast_collection.find({}, {"_id": 1})
     previous_docs_lst = list(map(lambda dict1: dict1["_id"], previous_docs))
+    
     count = 0
     for i in cities_geolocation_df.index:
         cityName = cities_geolocation_df.loc[i]['city']
         latitude =  cities_geolocation_df.loc[i]['lat']
         langitude = cities_geolocation_df.loc[i]['lng']
-        url = f"https://api.openweathermap.org/data/2.5/onecall?lat={latitude}&lon={langitude}&exclude=hourly,minutely,current&appid={OPEN_WEATHER_MAP_API}&units=metric"
-        res = requests.post(url)
-        data = res.text
-        parsed_json = json.loads(data)
-        pprint(parsed_json)
-        
-        parsed_json["_id"] = cityName
         if cityName not in previous_docs_lst:
+            url = f"https://api.openweathermap.org/data/2.5/onecall?lat={latitude}&lon={langitude}&exclude=hourly,minutely,current&appid={OPEN_WEATHER_MAP_API}&units=metric"
+            res = requests.post(url)
+            data = res.text
+            parsed_json = json.loads(data)
+            
+            parsed_json["_id"] = cityName
             weather_forecast_collection.insert_one(parsed_json)
             count += 1
         break
 
-        # for i in range(8):
-        #     break
-        #     day = parsed_json['daily'][i]['temp']['day']
-        #     min = parsed_json['daily'][i]['temp']['min']
-        #     max = parsed_json['daily'][i]['temp']['max']
-        #     night = parsed_json['daily'][i]['temp']['night']
-        #     eve = parsed_json['daily'][i]['temp']['eve']
-        #     morn = parsed_json['daily'][i]['temp']['morn']
-        #     press = parsed_json['daily'][i]['pressure']
-        #     dew = parsed_json['daily'][i]['dew_point']
-        #     windSpeed = parsed_json['daily'][i]['wind_speed']
-        #     humidity = parsed_json['daily'][i]['humidity']
-        #     cloud = parsed_json['daily'][i]['clouds']
-        #     uvi = parsed_json['daily'][i]['uvi']
-        #     sky =  parsed_json['daily'][i]['weather'][0]['main']
-        #     skky =  parsed_json['daily'][i]['weather'][0]['description']
-
-        #     insertData = {
-        #         "id" : i ,
-        #         "day temperature" : day,
-        #         "min temperature" : min,
-        #         "max temperature" : max,
-        #         "night temperature" : night,
-        #         "evening temperature": eve,
-        #         "morning temperature": morn, 
-        #         "pressure" : press,
-        #         "dew point" : dew,
-        #         "windSpeed" : windSpeed,
-        #         "humidity" :humidity,
-        #         "cloud":cloud,
-        #         "uvi index":uvi, 
-        #         "weather" : sky ,
-        #         "sky" : skky 
-        #         }
-            
-        # collection.insert_one(insertData)
-        # insertData.clear()
-
     print("Fetched and Inserted weather information of total cities {}".format(count))
 
-def UpdateData(cities_geolocation_df):
-    """This Module inserts the weather data of city fetched from `openweathermapapi` in mongodb
+def updateData(cities_geolocation_df):
+    """This Module updates the weather data of cities, fetched from `openweathermapapi` in mongodb
 
     Args:
         cities_geolocation_df (DataFrame.Pandas): Pandas DataFrame containing following fields:
         i.e., `city`, `lat`, `lng`
     """
+    
+    # create collection for WeatherForecast
+    weather_forecast_collection = kisan_awaz_db["WeatherForecast"]
+    
     count = 0 
     for i in cities_geolocation_df.index:
         cityName = cities_geolocation_df.loc[i]['city']
@@ -101,15 +70,13 @@ def UpdateData(cities_geolocation_df):
         res = requests.post(url)
         data = res.text
         parsed_json = json.loads(data)
-        pprint(parsed_json)
-        count += 1
-        
-#       create collection for WeatherForecast
-        weather_forecast_collection = kisan_awaz_db["WeatherForecast"]
         
         parsed_json["_id"] = cityName
-        weather_forecast_collection.insert_one(parsed_json)
+        updated_doc = weather_forecast_collection.find_one_and_replace({"_id": cityName}, parsed_json)
+        count += 1
         break
+    print("Fetched and Updated weather information of total cities {}".format(count))
+    
 
 def load_cities_from_db():
     """Loads Collection from Database and saves documents from
@@ -167,5 +134,6 @@ if __name__ == '__main__':
     cities_geolocation_df = load_cities_from_db()
     
     # db = client["weatherData"]
-    insertData(cities_geolocation_df)
-    # print("data enter successfully in database")
+    # insertData(cities_geolocation_df)
+    # updateData(cities_geolocation_df)
+    print("Data enter successfully in database...!")
