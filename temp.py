@@ -19,16 +19,38 @@ latitude, longitude = 31.577572, 74.357416
 # print(exclude_list)
 
 # -----------------------------------------------------------------------------
-from pyowm import OWM
-from pyowm.utils import timestamps
+# from pyowm import OWM
+# from pyowm.utils import timestamps
 # from pyowm.utils import config
-owm = OWM('5af4c2482556ed487ddf572a2f3088c8')
-mgr = owm.weather_manager()
-one_call = mgr.one_call(lat=latitude, lon=longitude)
+# owm = OWM('5af4c2482556ed487ddf572a2f3088c8')
+# mgr = owm.weather_manager()
+# one_call = mgr.one_call(lat=latitude, lon=longitude)
 # forecast = mgr.forecast_at_place('Milan,IT', 'daily')
 # answer = forecast.will_be_clear_at(timestamps.tomorrow())
 # print(timestamps.tomorrow())
 # print(answer)
 # print(one_call.forecast_daily[0].temperature('celsius'))
-print(one_call.forecast_daily[0].wind())
+# print(one_call.forecast_daily[0].wind())
 # print(one_call.forecast_daily[0].temperature('celsius').get('feels_like_morn', None))
+
+# --------------------------
+import math
+import colorama
+
+def progress_bar(progress, total, color=colorama.Fore.YELLOW):
+    percent = 100 * (progress / float(total))
+    bar = "█" * int(percent) + '-' * (100 - int(percent))
+    print(color + f"\r|{bar}| {percent:.2f}%", end="\r")
+    
+    if progress == total:
+        print(colorama.Fore.GREEN + f"\r|{bar}| {percent:.2f}%", end="\r")
+        
+    
+numbers = [x * 5 for x in range(2000, 3000)]
+results = list()
+
+for i, x in enumerate(numbers):
+    results.append(math.factorial(x))
+    progress_bar(i+1, len(numbers))
+
+print(colorama.Fore.RESET, end='')

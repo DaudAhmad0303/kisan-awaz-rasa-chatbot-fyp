@@ -118,6 +118,7 @@ def relative_day_no(day_name, timestamp = datetime.now().timestamp()):
     # # Get Time from TimeStamp
     # print("Time from TimeStamp: ", datetime.fromtimestamp(timestamp))
     return None
+import sys
 
 
 
@@ -126,3 +127,4 @@ if __name__ == "__main__":
     # print(get_matched_name("لاہو", "city"))
     # print(get_matched_name("سومو", "day"))
     print(datetime.fromtimestamp(1678604400))
+    

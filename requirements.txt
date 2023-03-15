@@ -6,3 +6,4 @@ pip install pprint
 pip install python-Levenshtein
 pip install fuzzywuzzy
 pip install datetime
+pip install colorama

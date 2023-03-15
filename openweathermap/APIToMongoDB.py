@@ -6,7 +6,7 @@ from os import getenv
 from pprint import pprint
 import json
 import pymongo
-
+import colorama
 
 dotenv_path = Path("D:\Daud Ahmad\FYP\RASA Implementation\code\.env")
 load_dotenv(dotenv_path=dotenv_path)
@@ -15,6 +15,21 @@ OPEN_WEATHER_MAP_API = getenv("OPEN_WEATHER_MAP_API")
 # Database Client Created
 client = pymongo.MongoClient("mongodb://localhost:27017")
 kisan_awaz_db = client["KisanAwaz"]
+
+def progress_bar(progress, total, color=colorama.Fore.YELLOW):
+    """Shows the progress bar based on the parameters `progress` and `total`
+
+    Args:
+        progress (int): The amount of task that has been done
+        total (_type_): The total amount of task that has to be.
+        color (colorama.Fore.[ANY_COLOR], optional): The color of the bar which you wants to show for progress bar. Defaults to colorama.Fore.YELLOW.
+    """
+    percent = 100 * (progress / float(total))
+    bar = "█" * int(percent) + '-' * (100 - int(percent))
+    print(color + f"\r|{bar}| {percent:.2f}%", end="\r")
+    
+    if progress == total:
+        print(colorama.Fore.GREEN + f"\r|{bar}| {percent:.2f}%", end="\r")
 
 def insertData(cities_geolocation_df):
     """This Module inserts the weather data of cities, fetched from `openweathermapapi` in mongodb
@@ -31,7 +46,7 @@ def insertData(cities_geolocation_df):
     # storing all the cities name in a single list
     previous_docs = weather_forecast_collection.find({}, {"_id": 1})
     previous_docs_lst = list(map(lambda dict1: dict1["_id"], previous_docs))
-    
+    previous_docs_lst = list()
     count = 0
     for i in cities_geolocation_df.index:
         cityName = cities_geolocation_df.loc[i]['city']
@@ -45,10 +60,11 @@ def insertData(cities_geolocation_df):
             
             parsed_json["_id"] = cityName
             weather_forecast_collection.insert_one(parsed_json)
+            progress_bar(count+1, len(cities_geolocation_df) - len(previous_docs_lst))
             count += 1
         break
-
-    print("Fetched and Inserted weather information of total cities {}".format(count))
+    print(colorama.Fore.RESET)
+    print("\nFetched and Inserted weather information of total cities {}\n".format(count))
 
 def updateData(cities_geolocation_df):
     """This Module updates the weather data of cities, fetched from `openweathermapapi` in mongodb
@@ -60,7 +76,7 @@ def updateData(cities_geolocation_df):
     
     # create collection for WeatherForecast
     weather_forecast_collection = kisan_awaz_db["WeatherForecast"]
-    
+
     count = 0 
     for i in cities_geolocation_df.index:
         cityName = cities_geolocation_df.loc[i]['city']
@@ -73,10 +89,11 @@ def updateData(cities_geolocation_df):
         
         parsed_json["_id"] = cityName
         updated_doc = weather_forecast_collection.find_one_and_replace({"_id": cityName}, parsed_json)
+        progress_bar(count+1, len(cities_geolocation_df))
         count += 1
         break
-    print("Fetched and Updated weather information of total cities {}".format(count))
-    
+    print(colorama.Fore.RESET)
+    print("\nFetched and Updated weather information of total cities {}\n".format(count))
 
 def load_cities_from_db():
     """Loads Collection from Database and saves documents from
@@ -95,7 +112,7 @@ def load_cities_from_db():
             doc['latitude'],
             doc['longitude']
         ]
-    print("File open successfully")
+    print("City Geolocation data loaded form DB successfully...\n")
     
     # print(cities_geo_locations_df.loc[0:4])
     return cities_geo_locations_df
@@ -111,20 +128,9 @@ def load_cities_from_csv():
         encoding = "UTF-8",
         header = 0
     )
-    print("File open successfully")
-    # print(cities_geo_locations_df.head(5))
-    # thisList = list()
-    # for i in range(len(cities_geolocations_df)):
-    #     linee = [
-    #         df["city"].loc[i],
-    #         df["lat"].loc[i],
-    #         df["lng"].loc[i]
-    #     ]
-    #     thisList.append(linee)
-    #     break
+    print("CSV file open successfully...\n")
     
     return cities_geo_locations_df
-
 
 if __name__ == '__main__':
 
@@ -133,7 +139,6 @@ if __name__ == '__main__':
     # cities_geolocation_df = load_cities_from_csv()
     cities_geolocation_df = load_cities_from_db()
     
-    # db = client["weatherData"]
-    # insertData(cities_geolocation_df)
-    # updateData(cities_geolocation_df)
+    insertData(cities_geolocation_df)
+    updateData(cities_geolocation_df)
     print("Data enter successfully in database...!")
