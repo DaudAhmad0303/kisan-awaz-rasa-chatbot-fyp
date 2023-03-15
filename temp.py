@@ -1,5 +1,5 @@
 # from openweathermap import Weather
-latitude, longitude = 31.577572, 74.357416
+# latitude, longitude = 31.577572, 74.357416
 # day = 2
 # apikey = "5af4c2482556ed487ddf572a2f3088c8"
 # weather = Weather(apikey= apikey, lat= latitude, lng= longitude)
@@ -34,23 +34,25 @@ latitude, longitude = 31.577572, 74.357416
 # print(one_call.forecast_daily[0].temperature('celsius').get('feels_like_morn', None))
 
 # --------------------------
-import math
-import colorama
+# import math
+# import colorama
 
-def progress_bar(progress, total, color=colorama.Fore.YELLOW):
-    percent = 100 * (progress / float(total))
-    bar = "█" * int(percent) + '-' * (100 - int(percent))
-    print(color + f"\r|{bar}| {percent:.2f}%", end="\r")
+# def progress_bar(progress, total, color=colorama.Fore.YELLOW):
+#     percent = 100 * (progress / float(total))
+#     bar = "█" * int(percent) + '-' * (100 - int(percent))
+#     print(color + f"\r|{bar}| {percent:.2f}%", end="\r")
     
-    if progress == total:
-        print(colorama.Fore.GREEN + f"\r|{bar}| {percent:.2f}%", end="\r")
+#     if progress == total:
+#         print(colorama.Fore.GREEN + f"\r|{bar}| {percent:.2f}%", end="\r")
         
     
-numbers = [x * 5 for x in range(2000, 3000)]
-results = list()
+# numbers = [x * 5 for x in range(2000, 3000)]
+# results = list()
 
-for i, x in enumerate(numbers):
-    results.append(math.factorial(x))
-    progress_bar(i+1, len(numbers))
+# for i, x in enumerate(numbers):
+#     results.append(math.factorial(x))
+#     progress_bar(i+1, len(numbers))
 
-print(colorama.Fore.RESET, end='')
+# print(colorama.Fore.RESET, end='')
+
+# -----------------------------------------------------------------------------------------------

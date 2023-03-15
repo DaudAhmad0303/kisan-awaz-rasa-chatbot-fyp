@@ -126,5 +126,6 @@ if __name__ == "__main__":
     # print(relative_day_no("اتوار"))
     # print(get_matched_name("لاہو", "city"))
     # print(get_matched_name("سومو", "day"))
-    print(datetime.fromtimestamp(1678604400))
+    print(datetime.fromtimestamp(1678604400), "Karachi Previous")
+    # print(datetime.fromtimestamp(1678863600), "Karachi New")
     

@@ -7,6 +7,7 @@ from pprint import pprint
 import json
 import pymongo
 import colorama
+from datetime import datetime
 
 dotenv_path = Path("D:\Daud Ahmad\FYP\RASA Implementation\code\.env")
 load_dotenv(dotenv_path=dotenv_path)
@@ -91,7 +92,7 @@ def updateData(cities_geolocation_df):
         updated_doc = weather_forecast_collection.find_one_and_replace({"_id": cityName}, parsed_json)
         progress_bar(count+1, len(cities_geolocation_df))
         count += 1
-        break
+        # break
     print(colorama.Fore.RESET)
     print("\nFetched and Updated weather information of total cities {}\n".format(count))
 
@@ -132,6 +133,11 @@ def load_cities_from_csv():
     
     return cities_geo_locations_df
 
+def time_DB_updated():
+    weather_forecast_collection = kisan_awaz_db["WeatherForecast"]
+    for doc in weather_forecast_collection.find({"_id":"کراچی"}, {"daily": 1}):
+        return "Date & Time: " + str(datetime.fromtimestamp(doc['daily'][0]['dt']))
+    
 if __name__ == '__main__':
 
     client = pymongo.MongoClient("mongodb://localhost:27017")
@@ -139,6 +145,8 @@ if __name__ == '__main__':
     # cities_geolocation_df = load_cities_from_csv()
     cities_geolocation_df = load_cities_from_db()
     
-    insertData(cities_geolocation_df)
-    updateData(cities_geolocation_df)
+    print("Last Updated", time_DB_updated())
+    # insertData(cities_geolocation_df)
+    # updateData(cities_geolocation_df)
+    print("New", time_DB_updated())
     print("Data enter successfully in database...!")
