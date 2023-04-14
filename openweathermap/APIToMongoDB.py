@@ -146,7 +146,10 @@ if __name__ == '__main__':
     cities_geolocation_df = load_cities_from_db()
     
     print("Last Updated", time_DB_updated())
+    
+    # Un-comment any of the following line to insert or update data in database
     # insertData(cities_geolocation_df)
     # updateData(cities_geolocation_df)
+    
     print("New", time_DB_updated())
     print("Data enter successfully in database...!")

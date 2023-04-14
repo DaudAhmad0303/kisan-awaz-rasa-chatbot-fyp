@@ -41,7 +41,8 @@ def get_matched_name(name :str, name_type: str, data = list()):
         return sentence, matching_ratio
     else:
         print("Got word:", sentence, matching_ratio)
-        return None
+        # return None
+        return sentence, matching_ratio
 
 
 if __name__ == "__main__":
