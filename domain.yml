@@ -1,4 +1,4 @@
-version: "2.0"
+version: "3.1"
 
 intents:
   - greet
@@ -10,7 +10,11 @@ intents:
   - bot_challenge
   - thanks
   - asking_morn_temp
+  - asking_eve_temp
   - asking_night_temp
+  - asking_min_temp
+  - asking_max_temp
+  - asking_min_max_temp
   - telling_city:
       use_entities: true
   - telling_day:
@@ -24,20 +28,32 @@ slots:
   city:
     type: text
     initial_value: null
-    auto_fill: true
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: city
   
-  morn_temp:
-    type: text
-    initial_value: null
-  
-  night_temp:
-    type: text
-    initial_value: null
-
   day:
     type: text
     initial_value: null
-    auto_fill: true
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: day
+  
+  morn_temp:
+    type: any
+    influence_conversation: false
+    initial_value: null
+    mappings:
+    - type: custom
+  
+  night_temp:
+    type: any
+    influence_conversation: false
+    initial_value: null
+    mappings:
+    - type: custom
 
 actions:
   - action_hello_world
