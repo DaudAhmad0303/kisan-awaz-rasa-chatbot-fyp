@@ -48,18 +48,43 @@ slots:
     mappings:
     - type: custom
   
-  night_temp:
+  eve_temp:
     type: any
     influence_conversation: false
     initial_value: null
     mappings:
     - type: custom
 
+  night_temp:
+    type: any
+    influence_conversation: false
+    initial_value: null
+    mappings:
+    - type: custom
+  
+  max_temp:
+    type: any
+    influence_conversation: false
+    initial_value: null
+    mappings:
+    - type: custom
+
+  min_temp:
+    type: any
+    influence_conversation: false
+    initial_value: null
+    mappings:
+    - type: custom
+  
+
 actions:
   - action_hello_world
   - action_utter_morn_temp
+  - action_utter_eve_temp
   - action_utter_night_temp
-
+  - action_utter_min_temp
+  - action_utter_max_temp
+  - action_utter_min_max_temp
 
 responses:
   utter_greet:
