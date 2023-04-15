@@ -18,7 +18,7 @@ def get_matched_name(name :str, name_type: str, data = list()):
         _type_: `None` if the matching proportion is less than 60,
                     Otherwise, the `str` name with the maximum matching ratio.
     """
-    data = list()
+
     if name_type == "city":
         # Reading the Cities files as list
         with open("CitiesList.txt", encoding='UTF-8') as file:
@@ -31,7 +31,7 @@ def get_matched_name(name :str, name_type: str, data = list()):
                 data.append(val.strip())
     
     
-    if name == None:   return None
+    if name == None:   return None, 0
     
     # Finding the only one string with maximum matching ratio and 
     # its matching ratio all available strings

@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 from pprint import pprint
 
-def relative_day_no(day_name, timestamp = datetime.now().timestamp()):
+def relative_day_no(day_name, DB_update_time = datetime.now().timestamp()):
     """An Intellegent Function that can return the day number
     in reference with the database update day/current day
     
@@ -12,7 +12,7 @@ def relative_day_no(day_name, timestamp = datetime.now().timestamp()):
 
     Args:
         day_name (str): day name i.e., آج، کل، سوموار
-        timestamp (class.datetime.timestamp, optional): Last update timestamp for database. Defaults to datetime.now().timestamp().
+        DB_update_time (class.datetime.timestamp, optional): Last update timestamp for database. Defaults to datetime.now().timestamp().
 
     Returns:
         int: day-number for datebase record reterival
@@ -22,8 +22,6 @@ def relative_day_no(day_name, timestamp = datetime.now().timestamp()):
         "کل" : 1,
         "پرسوں" : 2
     }
-    if day_name in relative_day:
-        return relative_day[day_name]
     
     days_ur_en = {
         "پیر" : "Monday",
@@ -40,7 +38,7 @@ def relative_day_no(day_name, timestamp = datetime.now().timestamp()):
     
     for i in range(7):
         # Got date of current day and procedings
-        date = datetime.fromtimestamp(timestamp) + timedelta(days=i)
+        date = datetime.fromtimestamp(DB_update_time) + timedelta(days=i)
         
         # Got today and procedings
         day = datetime.strftime(date, '%A')
@@ -60,6 +58,11 @@ def relative_day_no(day_name, timestamp = datetime.now().timestamp()):
     #     'Wednesday': 5,
     #     'Thursday': 6
     #     }
+    
+    if day_name in relative_day:
+        # Got current day 
+        today_name = datetime.today().strftime('%A')
+        return week_days[today_name] + relative_day[day_name]
     
     if day_name in days_ur_en:
         day_en = days_ur_en[day_name]
@@ -85,5 +88,5 @@ def relative_day_no(day_name, timestamp = datetime.now().timestamp()):
     # print("Current week day number: ", datetime.today().strftime('%A'))
     
     # # Get Time from TimeStamp
-    # print("Time from TimeStamp: ", datetime.fromtimestamp(timestamp))
+    # print("Time from TimeStamp: ", datetime.fromtimestamp(DB_update_time))
     return None

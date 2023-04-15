@@ -91,7 +91,7 @@ class ActionMornTemp(Action):
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
-        day_no_for_DB = relative_day_no(received_day)
+        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
         print(day_no_for_DB)
         
         # Getting most matched city name with custom function
@@ -146,7 +146,7 @@ class ActionEveTemp(Action):
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
-        day_no_for_DB = relative_day_no(received_day)
+        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
         print(day_no_for_DB)
         
         # Getting most matched city name with custom function
@@ -201,7 +201,7 @@ class ActionNightTemp(Action):
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
-        day_no_for_DB = relative_day_no(received_day)
+        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
         print(day_no_for_DB)
         
         # Getting most matched city name with custom function
@@ -256,7 +256,7 @@ class ActionMinTemp(Action):
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
-        day_no_for_DB = relative_day_no(received_day)
+        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
         print(day_no_for_DB)
         
         # Getting most matched city name with custom function
@@ -311,7 +311,7 @@ class ActionMaxTemp(Action):
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
-        day_no_for_DB = relative_day_no(received_day)
+        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
         print(day_no_for_DB)
         
         # Getting most matched city name with custom function
@@ -366,7 +366,7 @@ class ActionMinMaxTemp(Action):
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
-        day_no_for_DB = relative_day_no(received_day)
+        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
         print(day_no_for_DB)
         
         # Getting most matched city name with custom function

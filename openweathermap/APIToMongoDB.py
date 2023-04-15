@@ -133,10 +133,21 @@ def load_cities_from_csv():
     
     return cities_geo_locations_df
 
-def time_DB_updated():
+def time_DB_updated(formated = True):
+    """This function returns the time when the database was last updated.
+
+    Args:
+        formated (bool, optional): whether needs formated string of time or `datetime.timestamp`. Defaults to True.
+
+    Returns:
+        timestamp: DB last updated time [formated]
+    """
     weather_forecast_collection = kisan_awaz_db["WeatherForecast"]
     for doc in weather_forecast_collection.find({"_id":"کراچی"}, {"daily": 1}):
-        return "Date & Time: " + str(datetime.fromtimestamp(doc['daily'][0]['dt']))
+        if not formated:
+            return doc['daily'][0]['dt']
+        else:
+            return "Date & Time: " + str(datetime.fromtimestamp(doc['daily'][0]['dt']))
     
 if __name__ == '__main__':
 

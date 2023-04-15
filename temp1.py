@@ -32,7 +32,7 @@ text = f"my account number is [1234567891](account_number)"
 bot_response_to_send = f"{received_day} {most_matched_city} میں صبح کا درجہ حرارت {day_temp} ڈگری سینٹی گریڈ رہے گا۔"
 print(text)
 '''
-def relative_day_no(day_name, timestamp = datetime.now().timestamp()):
+def relative_day_no(day_name, DB_update_time = datetime.now().timestamp()):
     """An Intellegent Function that can return the day number
     in reference with the database update day/current day
     
@@ -43,7 +43,7 @@ def relative_day_no(day_name, timestamp = datetime.now().timestamp()):
 
     Args:
         day_name (str): day name i.e., آج، کل، سوموار
-        timestamp (class.datetime.timestamp, optional): Last update timestamp for database. Defaults to datetime.now().timestamp().
+        DB_update_time (class.datetime.timestamp, optional): Last update timestamp for database. Defaults to datetime.now().timestamp().
 
     Returns:
         int: day-number for datebase record reterival
@@ -53,8 +53,6 @@ def relative_day_no(day_name, timestamp = datetime.now().timestamp()):
         "کل" : 1,
         "پرسوں" : 2
     }
-    if day_name in relative_day:
-        return relative_day[day_name]
     
     days_ur_en = {
         "پیر" : "Monday",
@@ -71,7 +69,7 @@ def relative_day_no(day_name, timestamp = datetime.now().timestamp()):
     
     for i in range(7):
         # Got date of current day and procedings
-        date = datetime.fromtimestamp(timestamp) + timedelta(days=i)
+        date = datetime.fromtimestamp(DB_update_time) + timedelta(days=i)
         
         # Got today and procedings
         day = datetime.strftime(date, '%A')
@@ -91,6 +89,11 @@ def relative_day_no(day_name, timestamp = datetime.now().timestamp()):
     #     'Wednesday': 5,
     #     'Thursday': 6
     #     }
+    
+    if day_name in relative_day:
+        # Got date of current day 
+        today_name = datetime.today().strftime('%A')
+        return week_days[today_name] + relative_day[day_name]
     
     if day_name in days_ur_en:
         day_en = days_ur_en[day_name]
@@ -116,16 +119,21 @@ def relative_day_no(day_name, timestamp = datetime.now().timestamp()):
     # print("Current week day number: ", datetime.today().strftime('%A'))
     
     # # Get Time from TimeStamp
-    # print("Time from TimeStamp: ", datetime.fromtimestamp(timestamp))
+    # print("Time from TimeStamp: ", datetime.fromtimestamp(DB_update_time))
     return None
 import sys
 
 
 
 if __name__ == "__main__":
-    # print(relative_day_no("اتوار"))
+    print("Current week day no:", datetime.today().weekday())
+    print(datetime.fromtimestamp(1681455600), "Gujranwala Previous")
+    print(relative_day_no("ہفتہ",1681455600))
+    print(relative_day_no("آج",1681455600))
+    print(relative_day_no("کل",1681455600))
+    print(relative_day_no("پرسوں",1681455600))
     # print(get_matched_name("لاہو", "city"))
     # print(get_matched_name("سومو", "day"))
-    print(datetime.fromtimestamp(1678604400), "Karachi Previous")
+    # print(datetime.fromtimestamp(1678604400), "Karachi Previous")
     # print(datetime.fromtimestamp(1678863600), "Karachi New")
     
