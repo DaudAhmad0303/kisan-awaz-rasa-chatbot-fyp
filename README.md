@@ -1,2 +1,4 @@
-# kisan-awaz-rasa-chatbot-fyp
-Final Year Project of Bachelors of Science (Computer Science). A Voice-Enabled-Urdu-Chatbot build using RASA specifically designed for farmers in Pakistan, they would be able to talk to Chatbot in Urdu Language and get to know the weather forecast for next week, Machinery prices, Fertilizers and Pesticides prices in Urdu Language.
+# Kisan Awaz RASA Chatbot
+
+Introducing a revolutionary *Final Year Project* in the field of Computer Science - a cutting-edge, **Voice-Enabled Urdu Chatbot** designed specifically for farmers in Pakistan. Built using RASA, this chatbot allows farmers to easily communicate with it in their native language and obtain valuable information about the weather forecast for the upcoming week, machinery prices, as well as fertilizers and pesticides prices. With this innovative technology, farmers can now access vital information conveniently and efficiently, ultimately leading to increased productivity and success in their agricultural endeavors.
+
