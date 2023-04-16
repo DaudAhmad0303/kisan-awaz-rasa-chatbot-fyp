@@ -119,7 +119,7 @@ responses:
   - text: "Bye"
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+  - text: "میرا نام کسان آواز ہے۔ میں ایک چیٹ بوٹ  ہوں جو آپ کے ساتھ بات چیت کرتا ہے۔ اس کی مدد سے آپ کچھ بھی پوچھ سکتے ہیں، جیسے کہ موسم کی تبدیلیاں، کھیتی کے آوزار، اور کھادوں اور کیڑے مار ادویات کی قیمتیں وغیرہ۔"
 
 session_config:
   session_expiration_time: 60
