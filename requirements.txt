@@ -7,3 +7,4 @@ pip install python-Levenshtein
 pip install fuzzywuzzy
 pip install datetime
 pip install colorama
+pip install locust==1.1.1
