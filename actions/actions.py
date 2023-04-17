@@ -400,3 +400,224 @@ class ActionMinMaxTemp(Action):
         dispatcher.utter_message(text=bot_response_to_send)
 
         return [SlotSet("min_temp", min_temp), SlotSet("max_temp", max_temp)]
+
+class ActionHumidity(Action):
+    
+    def name(self) -> Text:
+        return "action_utter_humidity"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        print("action_utter_humidity is called")
+        
+        # getting entity value of `city` and `day`
+        received_city = tracker.get_slot("city")
+        received_day = tracker.get_slot("day")
+        
+        print(received_city)
+        print(received_day)
+        
+        # Getting most matched day name with custom function
+        most_matched_day = get_matched_name(received_day, "day")[0]
+        
+        # Getting relative day-number for reteriving data from Database
+        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
+        print(day_no_for_DB)
+        
+        # Getting most matched city name with custom function
+        most_matched_city = get_matched_name(received_city, "city")[0]
+        
+        # Getting the GeoLocations' Document of `city` from Database
+        document = geo_locations_collection.find_one({'city': most_matched_city})
+        print(document)
+        
+        latitude = float(document['latitude'])
+        longitude = float(document['longitude'])
+        
+        # Getting Whole JSON/Document from DB of desired city
+        whole_JSON = weather_forecast_collection.find_one(
+            {
+                "lat": latitude,
+                "lon": longitude
+            }
+        )
+        # print(whole_JSON, type(whole_JSON))
+        
+        # Getting desired weather service
+        humidity = whole_JSON['daily'][day_no_for_DB]['humidity']
+        
+        if day_no_for_DB == 0:
+            bot_response_to_send = f"{most_matched_day} {most_matched_city} میں ہوا میں نمی کا تناسب {humidity} فیصد ہے۔"
+        else:
+            bot_response_to_send = f"{most_matched_day} کو {most_matched_city} میں ہوا میں نمی کا تناسب {humidity} فیصد رہے گا۔"
+        
+        dispatcher.utter_message(text=bot_response_to_send)
+
+        return [SlotSet("humidity", humidity)]
+
+class ActionAirPressure(Action):
+    
+    def name(self) -> Text:
+        return "action_utter_air_pressure"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        print("action_utter_air_pressure is called")
+        
+        # getting entity value of `city` and `day`
+        received_city = tracker.get_slot("city")
+        received_day = tracker.get_slot("day")
+        
+        print(received_city)
+        print(received_day)
+        
+        # Getting most matched day name with custom function
+        most_matched_day = get_matched_name(received_day, "day")[0]
+        
+        # Getting relative day-number for reteriving data from Database
+        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
+        print(day_no_for_DB)
+        
+        # Getting most matched city name with custom function
+        most_matched_city = get_matched_name(received_city, "city")[0]
+        
+        # Getting the GeoLocations' Document of `city` from Database
+        document = geo_locations_collection.find_one({'city': most_matched_city})
+        print(document)
+        
+        latitude = float(document['latitude'])
+        longitude = float(document['longitude'])
+        
+        # Getting Whole JSON/Document from DB of desired city
+        whole_JSON = weather_forecast_collection.find_one(
+            {
+                "lat": latitude,
+                "lon": longitude
+            }
+        )
+        # print(whole_JSON, type(whole_JSON))
+        
+        # Getting desired weather service
+        air_pressure = whole_JSON['daily'][day_no_for_DB]['pressure']
+        
+        if day_no_for_DB == 0:
+            bot_response_to_send = f"{most_matched_day} {most_matched_city} میں ہوا کے دباو کا تناسب {air_pressure} ایچ پی اے ہے۔"
+        else:
+            bot_response_to_send = f"{most_matched_day} کو {most_matched_city} میں ہوا کے دباو کا تناسب {air_pressure} ایچ پی اے رہے گا۔"
+        
+        dispatcher.utter_message(text=bot_response_to_send)
+
+        return [SlotSet("air_pressure", air_pressure)]
+
+class ActionWindSpeed(Action):
+    
+    def name(self) -> Text:
+        return "action_utter_wind_speed"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        print("action_utter_wind_speed is called")
+        
+        # getting entity value of `city` and `day`
+        received_city = tracker.get_slot("city")
+        received_day = tracker.get_slot("day")
+        
+        print(received_city)
+        print(received_day)
+        
+        # Getting most matched day name with custom function
+        most_matched_day = get_matched_name(received_day, "day")[0]
+        
+        # Getting relative day-number for reteriving data from Database
+        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
+        print(day_no_for_DB)
+        
+        # Getting most matched city name with custom function
+        most_matched_city = get_matched_name(received_city, "city")[0]
+        
+        # Getting the GeoLocations' Document of `city` from Database
+        document = geo_locations_collection.find_one({'city': most_matched_city})
+        print(document)
+        
+        latitude = float(document['latitude'])
+        longitude = float(document['longitude'])
+        
+        # Getting Whole JSON/Document from DB of desired city
+        whole_JSON = weather_forecast_collection.find_one(
+            {
+                "lat": latitude,
+                "lon": longitude
+            }
+        )
+        # print(whole_JSON, type(whole_JSON))
+        
+        # Getting desired weather service
+        wind_speed = whole_JSON['daily'][day_no_for_DB]['wind_speed']
+        
+        if day_no_for_DB == 0:
+            bot_response_to_send = f"{most_matched_day} {most_matched_city} میں ہوا {wind_speed} کلو میٹر فی گنٹہ کی رفتار سے چل رہی ہے۔"
+        else:
+            bot_response_to_send = f"{most_matched_day} کو {most_matched_city} میں ہوا {wind_speed} کلو میٹر فی گنٹہ کی رفتار سے چل رہی ہوگی۔"
+        
+        dispatcher.utter_message(text=bot_response_to_send)
+
+        return [SlotSet("wind_speed", wind_speed)]
+
+class ActionUVindex(Action):
+    
+    def name(self) -> Text:
+        return "action_utter_uv_index"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        print("action_utter_uv_index is called")
+        
+        # getting entity value of `city` and `day`
+        received_city = tracker.get_slot("city")
+        received_day = tracker.get_slot("day")
+        
+        print(received_city)
+        print(received_day)
+        
+        # Getting most matched day name with custom function
+        most_matched_day = get_matched_name(received_day, "day")[0]
+        
+        # Getting relative day-number for reteriving data from Database
+        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
+        print(day_no_for_DB)
+        
+        # Getting most matched city name with custom function
+        most_matched_city = get_matched_name(received_city, "city")[0]
+        
+        # Getting the GeoLocations' Document of `city` from Database
+        document = geo_locations_collection.find_one({'city': most_matched_city})
+        print(document)
+        
+        latitude = float(document['latitude'])
+        longitude = float(document['longitude'])
+        
+        # Getting Whole JSON/Document from DB of desired city
+        whole_JSON = weather_forecast_collection.find_one(
+            {
+                "lat": latitude,
+                "lon": longitude
+            }
+        )
+        # print(whole_JSON, type(whole_JSON))
+        
+        # Getting desired weather service
+        uv_index = whole_JSON['daily'][day_no_for_DB]['uvi']
+        
+        if day_no_for_DB == 0:
+            bot_response_to_send = f"{most_matched_day} {most_matched_city} میں الٹرا وایلیٹ شعاعوں کا انڈیکس {uv_index} ہے۔"
+        else:
+            bot_response_to_send = f"{most_matched_day} کو {most_matched_city} میں الٹرا وایلیٹ شعاعوں کا انڈیکس {uv_index} رہے گا۔"
+        
+        dispatcher.utter_message(text=bot_response_to_send)
+
+        return [SlotSet("uv_index", uv_index)]
+

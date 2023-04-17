@@ -15,6 +15,10 @@ intents:
   - asking_min_temp
   - asking_max_temp
   - asking_min_max_temp
+  - asking_humidity
+  - asking_air_pressure
+  - asking_wind_speed
+  - asking_uv_index
   - telling_city:
       use_entities: true
   - telling_day:
@@ -76,6 +80,33 @@ slots:
     mappings:
     - type: custom
   
+  humidity:
+    type: any
+    influence_conversation: false
+    initial_value: null
+    mappings:
+    - type: custom
+  
+  air_pressure:
+    type: any
+    influence_conversation: false
+    initial_value: null
+    mappings:
+    - type: custom
+  
+  wind_speed:
+    type: any
+    influence_conversation: false
+    initial_value: null
+    mappings:
+    - type: custom
+  
+  uv_index:
+    type: any
+    influence_conversation: false
+    initial_value: null
+    mappings:
+    - type: custom
 
 actions:
   - action_hello_world
@@ -85,6 +116,10 @@ actions:
   - action_utter_min_temp
   - action_utter_max_temp
   - action_utter_min_max_temp
+  - action_utter_humidity
+  - action_utter_air_pressure
+  - action_utter_wind_speed
+  - action_utter_uv_index
 
 responses:
   utter_greet:
@@ -119,7 +154,7 @@ responses:
   - text: "Bye"
 
   utter_iamabot:
-  - text: "میرا نام کسان آواز ہے۔ میں ایک چیٹ بوٹ  ہوں جو آپ کے ساتھ بات چیت کرتا ہے۔ اس کی مدد سے آپ کچھ بھی پوچھ سکتے ہیں، جیسے کہ موسم کی تبدیلیاں، کھیتی کے آوزار، اور کھادوں اور کیڑے مار ادویات کی قیمتیں وغیرہ۔"
+  - text: "میرا نام کسان آواز ہے۔ میں ایک چیٹ بوٹ  ہوں جو آپ کے ساتھ بات چیت کرتا ہے۔ اس کی مدد سے آپ کچھ بھی پوچھ سکتے ہیں، جیسے کہ موسم کی تبدیلیاں، کھیتی کے اوزار، اور کھادوں اور کیڑے مار ادویات کی قیمتیں وغیرہ۔"
 
 session_config:
   session_expiration_time: 60

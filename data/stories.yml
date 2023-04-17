@@ -33,7 +33,7 @@ stories:
   - intent: deny
   - action: utter_goodbye
 
-- story: Asking about Morning Temperature everthing separatly (1)
+- story: Asking about Morning Temperature everything separatly (1)
   steps:
   - intent: greet
   - action: utter_greet
@@ -48,7 +48,7 @@ stories:
   - intent: thanks
   - action: utter_thanks
 
-- story: Asking about Evening Temperature everthing separatly (2)
+- story: Asking about Evening Temperature everything separatly (2)
   steps:
   - intent: greet
   - action: utter_greet
@@ -63,7 +63,7 @@ stories:
   - intent: thanks
   - action: utter_thanks
 
-- story: Asking about Night Temperature everthing separatly (3)
+- story: Asking about Night Temperature everything separatly (3)
   steps:
   - intent: greet
   - action: utter_greet
@@ -78,7 +78,7 @@ stories:
   - intent: thanks
   - action: utter_thanks
 
-- story: Asking about Minimum Temperature everthing separatly (4)
+- story: Asking about Minimum Temperature everything separatly (4)
   steps:
   - intent: greet
   - action: utter_greet
@@ -93,7 +93,7 @@ stories:
   - intent: thanks
   - action: utter_thanks
 
-- story: Asking about Maximum Temperature everthing separatly (5)
+- story: Asking about Maximum Temperature everything separatly (5)
   steps:
   - intent: greet
   - action: utter_greet
@@ -108,7 +108,7 @@ stories:
   - intent: thanks
   - action: utter_thanks
 
-- story: Asking about Minimum and Maximum Temperature everthing separatly (6)
+- story: Asking about Minimum and Maximum Temperature everything separatly (6)
   steps:
   - intent: greet
   - action: utter_greet
@@ -122,3 +122,64 @@ stories:
   - action: utter_ask_for_next
   - intent: thanks
   - action: utter_thanks
+
+- story: Asking about Humidity everything separatly (7)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - intent: asking_humidity
+  - action: utter_ask_city_for_weather
+  - intent: telling_city
+  - action: utter_ask_day_for_weather
+  - intent: telling_day
+  - action: action_utter_humidity
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks
+
+- story: Asking about Air Pressure everything separatly (8)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - intent: asking_air_pressure
+  - action: utter_ask_city_for_weather
+  - intent: telling_city
+  - action: utter_ask_day_for_weather
+  - intent: telling_day
+  - action: action_utter_air_pressure
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks
+
+- story: Asking about Wind Speed everything separatly (9)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - intent: asking_wind_speed
+  - action: utter_ask_city_for_weather
+  - intent: telling_city
+  - action: utter_ask_day_for_weather
+  - intent: telling_day
+  - action: action_utter_wind_speed
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks
+
+- story: Asking about UV index everything separatly (10)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - intent: asking_uv_index
+  - action: utter_ask_city_for_weather
+  - intent: telling_city
+  - action: utter_ask_day_for_weather
+  - intent: telling_day
+  - action: action_utter_uv_index
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks
+
