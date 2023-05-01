@@ -201,7 +201,7 @@ class ActionMornTemp(Action):
         # Getting desired weather service
         morn_temp = whole_JSON['daily'][day_no_for_DB]['temp']['morn']
         
-        if day_no_for_DB == 0:
+        if day_no_for_DB == 0 or most_matched_day == "آج":
             bot_response_to_send = f"{most_matched_day} {most_matched_city} میں صبح کا درجہ حرارت {morn_temp} ڈگری سینٹی گریڈ ہے۔"
         else:
             bot_response_to_send = f"{most_matched_day} {most_matched_city} میں صبح کا درجہ حرارت {morn_temp} ڈگری سینٹی گریڈ رہے گا۔"
@@ -257,7 +257,7 @@ class ActionEveTemp(Action):
         # Getting desired weather service
         eve_temp = whole_JSON['daily'][day_no_for_DB]['temp']['eve']
         
-        if day_no_for_DB == 0:
+        if day_no_for_DB == 0 or most_matched_day == "آج":
             bot_response_to_send = f"{most_matched_day} {most_matched_city} میں شام کا درجہ حرارت {eve_temp} ڈگری سینٹی گریڈ ہے۔"
         else:
             bot_response_to_send = f"{most_matched_day} کو {most_matched_city} میں شام کا درجہ حرارت {eve_temp} ڈگری سینٹی گریڈ رہے گا۔"
@@ -313,7 +313,7 @@ class ActionNightTemp(Action):
         # Getting desired weather service
         night_temp = whole_JSON['daily'][day_no_for_DB]['temp']['night']
         
-        if day_no_for_DB == 0:
+        if day_no_for_DB == 0 or most_matched_day == "آج":
             bot_response_to_send = f"{most_matched_day} {most_matched_city} میں رات کا درجہ حرارت {night_temp} ڈگری سینٹی گریڈ ہے۔"
         else:
             bot_response_to_send = f"{most_matched_day} {most_matched_city} میں رات میں درجہ حرارت {night_temp} ڈگری سینٹی گریڈ رہے گا۔"
@@ -369,7 +369,7 @@ class ActionMinTemp(Action):
         # Getting desired weather service
         min_temp = whole_JSON['daily'][day_no_for_DB]['temp']['min']
         
-        if day_no_for_DB == 0:
+        if day_no_for_DB == 0 or most_matched_day == "آج":
             bot_response_to_send = f"{most_matched_day} {most_matched_city} میں کم سے کم درجہ حرارت {min_temp} ڈگری سینٹی گریڈ ہے۔"
         else:
             bot_response_to_send = f"{most_matched_day} کو {most_matched_city} میں کم سے کم درجہ حرارت {min_temp} ڈگری سینٹی گریڈ رہے گا۔"
@@ -425,7 +425,7 @@ class ActionMaxTemp(Action):
         # Getting desired weather service
         max_temp = whole_JSON['daily'][day_no_for_DB]['temp']['max']
         
-        if day_no_for_DB == 0:
+        if day_no_for_DB == 0 or most_matched_day == "آج":
             bot_response_to_send = f"{most_matched_day} {most_matched_city} میں زیادہ سے زیادہ درجہ حرارت {max_temp} ڈگری سینٹی گریڈ ہے۔"
         else:
             bot_response_to_send = f"{most_matched_day} کو {most_matched_city} میں زیادہ سے زیادہ درجہ حرارت {max_temp} ڈگری سینٹی گریڈ رہے گا۔"
@@ -482,7 +482,7 @@ class ActionMinMaxTemp(Action):
         min_temp = whole_JSON['daily'][day_no_for_DB]['temp']['min']
         max_temp = whole_JSON['daily'][day_no_for_DB]['temp']['max']
         
-        if day_no_for_DB == 0:
+        if day_no_for_DB == 0 or most_matched_day == "آج":
             bot_response_to_send = f"{most_matched_day} {most_matched_city} میں کم سے کم درجہ حرارت {min_temp} ڈگری سینٹی گریڈ ہے، جبکہ زیادہ سے زیادہ درجہ حرارت {max_temp} ڈگری سینٹی گریڈ ہے۔"
         else:
             bot_response_to_send = f"{most_matched_day} کو {most_matched_city} میں کم سے کم درجہ حرارت {min_temp} ڈگری سینٹی گریڈ رہے گا، جبکہ زیادہ سے زیادہ درجہ حرارت {max_temp} ڈگری سینٹی گریڈ رہے گا۔"
@@ -538,7 +538,7 @@ class ActionHumidity(Action):
         # Getting desired weather service
         humidity = whole_JSON['daily'][day_no_for_DB]['humidity']
         
-        if day_no_for_DB == 0:
+        if day_no_for_DB == 0 or most_matched_day == "آج":
             bot_response_to_send = f"{most_matched_day} {most_matched_city} میں ہوا میں نمی کا تناسب {humidity} فیصد ہے۔"
         else:
             bot_response_to_send = f"{most_matched_day} کو {most_matched_city} میں ہوا میں نمی کا تناسب {humidity} فیصد رہے گا۔"
@@ -594,7 +594,7 @@ class ActionAirPressure(Action):
         # Getting desired weather service
         air_pressure = whole_JSON['daily'][day_no_for_DB]['pressure']
         
-        if day_no_for_DB == 0:
+        if day_no_for_DB == 0 or most_matched_day == "آج":
             bot_response_to_send = f"{most_matched_day} {most_matched_city} میں ہوا کے دباو کا تناسب {air_pressure} ایچ پی اے ہے۔"
         else:
             bot_response_to_send = f"{most_matched_day} کو {most_matched_city} میں ہوا کے دباو کا تناسب {air_pressure} ایچ پی اے رہے گا۔"
@@ -650,7 +650,7 @@ class ActionWindSpeed(Action):
         # Getting desired weather service
         wind_speed = whole_JSON['daily'][day_no_for_DB]['wind_speed']
         
-        if day_no_for_DB == 0:
+        if day_no_for_DB == 0 or most_matched_day == "آج":
             bot_response_to_send = f"{most_matched_day} {most_matched_city} میں ہوا {wind_speed} کلو میٹر فی گنٹہ کی رفتار سے چل رہی ہے۔"
         else:
             bot_response_to_send = f"{most_matched_day} کو {most_matched_city} میں ہوا {wind_speed} کلو میٹر فی گنٹہ کی رفتار سے چل رہی ہوگی۔"
@@ -706,7 +706,7 @@ class ActionUVindex(Action):
         # Getting desired weather service
         uv_index = whole_JSON['daily'][day_no_for_DB]['uvi']
         
-        if day_no_for_DB == 0:
+        if day_no_for_DB == 0 or most_matched_day == "آج":
             bot_response_to_send = f"{most_matched_day} {most_matched_city} میں الٹرا وایلیٹ شعاعوں کا انڈیکس {uv_index} ہے۔"
         else:
             bot_response_to_send = f"{most_matched_day} کو {most_matched_city} میں الٹرا وایلیٹ شعاعوں کا انڈیکس {uv_index} رہے گا۔"
