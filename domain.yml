@@ -19,6 +19,7 @@ intents:
   - asking_air_pressure
   - asking_wind_speed
   - asking_uv_index
+  - asking_weather
   - telling_city:
       use_entities: true
   - telling_day:
@@ -107,6 +108,13 @@ slots:
     initial_value: null
     mappings:
     - type: custom
+  
+  weather_id:
+    type: any
+    influence_conversation: false
+    initial_value: null
+    mappings:
+    - type: custom
 
 actions:
   - action_hello_world
@@ -120,6 +128,7 @@ actions:
   - action_utter_air_pressure
   - action_utter_wind_speed
   - action_utter_uv_index
+  - action_utter_weather
 
 responses:
   utter_greet:
