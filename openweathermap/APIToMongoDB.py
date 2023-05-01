@@ -9,7 +9,7 @@ import pymongo
 import colorama
 from datetime import datetime
 
-dotenv_path = Path("D:\Daud Ahmad\FYP\RASA Implementation\code\.env")
+dotenv_path = Path("D:\\Daud Ahmad\\FYP\\RASA Implementation\\code\\.env")
 load_dotenv(dotenv_path=dotenv_path)
 OPEN_WEATHER_MAP_API = getenv("OPEN_WEATHER_MAP_API")
 
@@ -125,7 +125,7 @@ def load_cities_from_csv():
         Pandas.DataFrame: DataFrame Containing Cities Geolocations
     """
     cities_geo_locations_df = pd.read_csv(
-        filepath_or_buffer = Path("D:\Daud Ahmad\FYP\Data Collection\cities geo locations.csv"),
+        filepath_or_buffer = Path("D:\\Daud Ahmad\\FYP\\Data Collection\\cities geo locations.csv"),
         encoding = "UTF-8",
         header = 0
     )
