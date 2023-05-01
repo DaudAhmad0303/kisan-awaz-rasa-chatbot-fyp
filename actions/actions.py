@@ -94,13 +94,13 @@ def get_weather_description(id: int) -> str:
         
         # Atmosphere Group
         701: "فضا میں ہلکی دھند چھائی",         # Mist
-        711: "فضا میں دھواں دھواں پھیلا",             # Smoke
+        711: "فضا میں دھواں دھواں پھیلا",        # Smoke
         721: "فضا میں گرد و غبار پھیلا",         # Haze
         731: "فضا میں ریت کے بگولہ چل رہے",     # Sand/Dust whirls
         741: "فضا میں دھند چھائی",              # Fog
         751: "فضا میں ریت اڑ رہی",              # Sand
         761: "فضا میں دھول کا سماں",            # Dust
-        762: "فضا میں آتش فشاں راکھ اڑ رہی",        # Volcanic ash
+        762: "فضا میں آتش فشاں راکھ اڑ رہی",    # Volcanic ash
         771: "تیز ہواوں کے طوفان چل رہے",       # Squalls
         781: "تیز آندھی چل رہی",                # Tornado
         
@@ -116,6 +116,7 @@ def get_weather_description(id: int) -> str:
         return weather_description[id] 
     else:
         return " "
+
 
 """class ActionSetGeoLocation(Action):
     
@@ -138,6 +139,7 @@ def get_weather_description(id: int) -> str:
         return []
 """
 
+
 class ActionHelloWorld(Action):
     
     def name(self) -> Text:
@@ -151,6 +153,7 @@ class ActionHelloWorld(Action):
         dispatcher.utter_message(text="Hello World!")
 
         return []
+
 
 class ActionMornTemp(Action):
     
@@ -207,6 +210,7 @@ class ActionMornTemp(Action):
 
         return [SlotSet("morn_temp", morn_temp)]
 
+
 class ActionEveTemp(Action):
     
     def name(self) -> Text:
@@ -261,6 +265,7 @@ class ActionEveTemp(Action):
         dispatcher.utter_message(text=bot_response_to_send)
 
         return [SlotSet("eve_temp", eve_temp)]
+
 
 class ActionNightTemp(Action):
     
@@ -317,6 +322,7 @@ class ActionNightTemp(Action):
 
         return [SlotSet("night_temp", night_temp)]
 
+
 class ActionMinTemp(Action):
     
     def name(self) -> Text:
@@ -372,6 +378,7 @@ class ActionMinTemp(Action):
 
         return [SlotSet("min_temp", min_temp)]
 
+
 class ActionMaxTemp(Action):
     
     def name(self) -> Text:
@@ -426,6 +433,7 @@ class ActionMaxTemp(Action):
         dispatcher.utter_message(text=bot_response_to_send)
 
         return [SlotSet("max_temp", max_temp)]
+
 
 class ActionMinMaxTemp(Action):
     
@@ -483,6 +491,7 @@ class ActionMinMaxTemp(Action):
 
         return [SlotSet("min_temp", min_temp), SlotSet("max_temp", max_temp)]
 
+
 class ActionHumidity(Action):
     
     def name(self) -> Text:
@@ -537,6 +546,7 @@ class ActionHumidity(Action):
         dispatcher.utter_message(text=bot_response_to_send)
 
         return [SlotSet("humidity", humidity)]
+
 
 class ActionAirPressure(Action):
     
@@ -593,6 +603,7 @@ class ActionAirPressure(Action):
 
         return [SlotSet("air_pressure", air_pressure)]
 
+
 class ActionWindSpeed(Action):
     
     def name(self) -> Text:
@@ -648,6 +659,7 @@ class ActionWindSpeed(Action):
 
         return [SlotSet("wind_speed", wind_speed)]
 
+
 class ActionUVindex(Action):
     
     def name(self) -> Text:
@@ -702,6 +714,7 @@ class ActionUVindex(Action):
         dispatcher.utter_message(text=bot_response_to_send)
 
         return [SlotSet("uv_index", uv_index)]
+
 
 class ActionWeather(Action):
     
@@ -775,16 +788,404 @@ class ActionWeather(Action):
                 urdu_weather_description = f"{urdu_weather_description} ہوں گے۔"
             elif weather_id in [761, 800]:
                 urdu_weather_description = f"{urdu_weather_description} ہوگا۔"
-            elif weather_id in [751, 762, 781, 800]:
+            elif weather_id in [751, 762, 781]:
                 urdu_weather_description = f"{urdu_weather_description} ہوگی۔"
+        
+        # Getting minimum and maximum temperature
+        min_temp = whole_JSON['daily'][day_no_for_DB]['temp']['min']
+        max_temp = whole_JSON['daily'][day_no_for_DB]['temp']['max']
+        
+        if day_no_for_DB == 0 or most_matched_day == "آج":
+            bot_response_to_send = f"{most_matched_day} {most_matched_city} میں {urdu_weather_description} جبکہ کم سے کم درجہ حرارت {min_temp} ڈگری سینٹی گریڈ ہے، اور زیادہ سے زیادہ درجہ حرارت {max_temp} ڈگری سینٹی گریڈ ہے۔"
+        else:
+            bot_response_to_send = f"{most_matched_day} کو {most_matched_city} میں {urdu_weather_description} جبکہ کم سے کم درجہ حرارت {min_temp} ڈگری سینٹی گریڈ رہے گا، اور زیادہ سے زیادہ درجہ حرارت {max_temp} ڈگری سینٹی گریڈ رہے گا۔"
+        
+        dispatcher.utter_message(text=bot_response_to_send)
+        
+        return [SlotSet("weather_id", weather_id), SlotSet("min_temp", min_temp), SlotSet("max_temp", max_temp)]
+
+
+class ActionRain(Action):
+    
+    def name(self) -> Text:
+        return "action_utter_rain"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        print("action_utter_rain is called")
+        
+        # getting entity value of `city` and `day`
+        received_city = tracker.get_slot("city")
+        received_day = tracker.get_slot("day")
+        
+        print(received_city)
+        print(received_day)
+        
+        # Getting most matched day name with custom function
+        most_matched_day = get_matched_name(received_day, "day")[0]
+        
+        # Getting relative day-number for reteriving data from Database
+        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
+        print(day_no_for_DB)
+        
+        # Getting most matched city name with custom function
+        most_matched_city = get_matched_name(received_city, "city")[0]
+        
+        # Getting the GeoLocations' Document of `city` from Database
+        document = geo_locations_collection.find_one({'city': most_matched_city})
+        print(document)
+        
+        latitude = float(document['latitude'])
+        longitude = float(document['longitude'])
+        
+        # Getting Whole JSON/Document from DB of desired city
+        whole_JSON = weather_forecast_collection.find_one(
+            {
+                "lat": latitude,
+                "lon": longitude
+            }
+        )
+        # print(whole_JSON, type(whole_JSON))
+        
+        # Getting desired weather service
+        weather_id = whole_JSON['daily'][day_no_for_DB]['weather'][0]['id']
+        
+        urdu_weather_description = get_weather_description(weather_id)
+        
+        # If there is any type of rain is happening, else for Neutral case
+        if weather_id in range(200, 532):
+            if day_no_for_DB == 0 or most_matched_day == "آج":
+                if weather_id in range(200, 700):
+                    urdu_weather_description = f"{most_matched_day} {most_matched_city} میں {urdu_weather_description} ہو رہی ہے۔"
+            else:
+                if weather_id in range(200, 700):
+                    urdu_weather_description = f"{most_matched_day} کو {most_matched_city} میں {urdu_weather_description} ہو رہی ہوگی۔"
+        else:
+            if day_no_for_DB == 0 or most_matched_day == "آج":
+                urdu_weather_description = f"جی نہیں! {most_matched_day} {most_matched_city} میں بارش نہیں ہو رہی ہے۔"
+            else:
+                urdu_weather_description = f"جی نہیں! {most_matched_day} کو {most_matched_city} میں بارش نہیں ہو رہی ہوگی۔"
+        
+        rain_level_text = ""
+        rain_level = 0
+        if 'rain' in  whole_JSON['daily'][day_no_for_DB]:
+            rain_level = whole_JSON['daily'][day_no_for_DB]['rain']
+            if day_no_for_DB == 0 or most_matched_day == "آج":
+                rain_level_text = f" اور بارش کی مقدار {rain_level} ملی میٹر ہے۔"
+            else:
+                rain_level_text = f" اور بارش کی مقدار {rain_level} ملی میٹر ہوگی۔"
+        
+        bot_response_to_send = f"{urdu_weather_description}{rain_level_text}"
+        
+        dispatcher.utter_message(text=bot_response_to_send)
+        
+        return [SlotSet("weather_id", weather_id), SlotSet("rain_level", rain_level)]
+
+
+class ActionSnow(Action):
+    
+    def name(self) -> Text:
+        return "action_utter_snow"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        print("action_utter_snow is called")
+        
+        # getting entity value of `city` and `day`
+        received_city = tracker.get_slot("city")
+        received_day = tracker.get_slot("day")
+        
+        print(received_city)
+        print(received_day)
+        
+        # Getting most matched day name with custom function
+        most_matched_day = get_matched_name(received_day, "day")[0]
+        
+        # Getting relative day-number for reteriving data from Database
+        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
+        print(day_no_for_DB)
+        
+        # Getting most matched city name with custom function
+        most_matched_city = get_matched_name(received_city, "city")[0]
+        
+        # Getting the GeoLocations' Document of `city` from Database
+        document = geo_locations_collection.find_one({'city': most_matched_city})
+        print(document)
+        
+        latitude = float(document['latitude'])
+        longitude = float(document['longitude'])
+        
+        # Getting Whole JSON/Document from DB of desired city
+        whole_JSON = weather_forecast_collection.find_one(
+            {
+                "lat": latitude,
+                "lon": longitude
+            }
+        )
+        # print(whole_JSON, type(whole_JSON))
+        
+        # Getting desired weather service
+        weather_id = whole_JSON['daily'][day_no_for_DB]['weather'][0]['id']
+        
+        urdu_weather_description = get_weather_description(weather_id)
+        
+        # If there is Snow falling or not, else for Nuteral case
+        if weather_id in range(600, 623):
+            if day_no_for_DB == 0 or most_matched_day == "آج":
+                urdu_weather_description = f"{most_matched_day} {most_matched_city} میں {urdu_weather_description} ہو رہی ہے۔"
+            else:
+                urdu_weather_description = f"{most_matched_day} کو {most_matched_city} میں {urdu_weather_description} ہو رہی ہوگی۔"
+        else:
+            if day_no_for_DB == 0 or most_matched_day == "آج":
+                urdu_weather_description = f"جی نہیں! {most_matched_day} {most_matched_city} میں برفباری نہیں ہو رہی ہے۔"
+            else:
+                urdu_weather_description = f"جی نہیں! {most_matched_day} کو {most_matched_city} میں برفباری نہیں ہو رہی ہوگی۔"
+        
+        snow_level_text = ""
+        snow_level = 0
+        if 'snow' in  whole_JSON['daily'][day_no_for_DB]:
+            snow_level = whole_JSON['daily'][day_no_for_DB]['snow']
+            if day_no_for_DB == 0 or most_matched_day == "آج":
+                snow_level_text = f" اور برف کی مقدار {snow_level} ملی میٹر ہے۔"
+            else:
+                snow_level_text = f" اور برف کی مقدار {snow_level} ملی میٹر ہوگی۔"
+        
+        bot_response_to_send = f"{urdu_weather_description}{snow_level_text}"
+        
+        dispatcher.utter_message(text=bot_response_to_send)
+        
+        return [SlotSet("weather_id", weather_id), SlotSet("snow_level", snow_level)]
+
+
+class ActionClouds(Action):
+    
+    def name(self) -> Text:
+        return "action_utter_clouds"
+    
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        print("action_utter_clouds is called")
+        
+        # getting entity value of `city` and `day`
+        received_city = tracker.get_slot("city")
+        received_day = tracker.get_slot("day")
+        
+        print(received_city)
+        print(received_day)
+        
+        # Getting most matched day name with custom function
+        most_matched_day = get_matched_name(received_day, "day")[0]
+        
+        # Getting relative day-number for reteriving data from Database
+        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
+        print(day_no_for_DB)
+        
+        # Getting most matched city name with custom function
+        most_matched_city = get_matched_name(received_city, "city")[0]
+        
+        # Getting the GeoLocations' Document of `city` from Database
+        document = geo_locations_collection.find_one({'city': most_matched_city})
+        print(document)
+        
+        latitude = float(document['latitude'])
+        longitude = float(document['longitude'])
+        
+        # Getting Whole JSON/Document from DB of desired city
+        whole_JSON = weather_forecast_collection.find_one(
+            {
+                "lat": latitude,
+                "lon": longitude
+            }
+        )
+        # print(whole_JSON, type(whole_JSON))
+        
+        # Getting desired weather service
+        weather_id = whole_JSON['daily'][day_no_for_DB]['weather'][0]['id']
+        
+        urdu_weather_description = get_weather_description(weather_id)
+        
+        # If there is clouds info or clear sky info already available, else for Nuteral case
+        if weather_id in range(800, 805):
+            if day_no_for_DB == 0 or most_matched_day == "آج":
+                if weather_id in [800]:
+                    urdu_weather_description = f"{most_matched_day} {most_matched_city} میں {urdu_weather_description} ہے۔"
+                elif weather_id in [801, 802, 803, 804]:
+                    urdu_weather_description = f"{most_matched_day} {most_matched_city} میں {urdu_weather_description} ہوئے ہیں۔"
+            else:
+                if weather_id in [801, 802, 803, 804]:
+                    urdu_weather_description = f"{most_matched_day} کو {most_matched_city} میں {urdu_weather_description} ہوں گے۔"
+                elif weather_id in [800]:
+                    urdu_weather_description = f"{most_matched_day} کو {most_matched_city} میں {urdu_weather_description} ہوگا۔"
+        else:
+            if day_no_for_DB == 0 or most_matched_day == "آج":
+                urdu_weather_description = f"{most_matched_day} {most_matched_city} میں آسمان صاف ہے۔"
+            else:
+                urdu_weather_description = f"{most_matched_day} کو {most_matched_city} میں آسمان صاف ہوگا۔"
+        
+        bot_response_to_send = urdu_weather_description
+        
+        dispatcher.utter_message(text=bot_response_to_send)
+        
+        return [SlotSet("weather_id", weather_id)]
+
+
+class ActionSmog(Action):
+    
+    def name(self) -> Text:
+        return "action_utter_smog"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        print("action_utter_smog is called")
+        
+        # getting entity value of `city` and `day`
+        received_city = tracker.get_slot("city")
+        received_day = tracker.get_slot("day")
+        
+        print(received_city)
+        print(received_day)
+        
+        # Getting most matched day name with custom function
+        most_matched_day = get_matched_name(received_day, "day")[0]
+        
+        # Getting relative day-number for reteriving data from Database
+        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
+        print(day_no_for_DB)
+        
+        # Getting most matched city name with custom function
+        most_matched_city = get_matched_name(received_city, "city")[0]
+        
+        # Getting the GeoLocations' Document of `city` from Database
+        document = geo_locations_collection.find_one({'city': most_matched_city})
+        print(document)
+        
+        latitude = float(document['latitude'])
+        longitude = float(document['longitude'])
+        
+        # Getting Whole JSON/Document from DB of desired city
+        whole_JSON = weather_forecast_collection.find_one(
+            {
+                "lat": latitude,
+                "lon": longitude
+            }
+        )
+        # print(whole_JSON, type(whole_JSON))
+        
+        # Getting desired weather service
+        weather_id = whole_JSON['daily'][day_no_for_DB]['weather'][0]['id']
+        
+        urdu_weather_description = get_weather_description(weather_id)
+        
+        # If actually there is Fog, Smoke, Smoge in the Atmosphere, else for Nuteral case
+        if weather_id in [701, 711, 741]:
+            if day_no_for_DB == 0 or most_matched_day == "آج":
+                if weather_id in [701, 741]:
+                    urdu_weather_description = f"{urdu_weather_description} ہوئی ہے۔"
+                elif weather_id in [711]:
+                    urdu_weather_description = f"{urdu_weather_description} ہوا ہے۔"
+            else:
+                if weather_id in [701, 741]:
+                    urdu_weather_description = f"{urdu_weather_description} ہوئی ہوگی۔"
+                elif weather_id in [711]:
+                    urdu_weather_description = f"{urdu_weather_description} ہوا گا۔"
+        else:
+            if day_no_for_DB == 0 or most_matched_day == "آج":
+                urdu_weather_description = f"فضا صاف ہے۔"
+            else:
+                urdu_weather_description = f"فضا صاف ہوگی۔"
+        
+        if day_no_for_DB == 0 or most_matched_day == "آج":
+            bot_response_to_send = f"{most_matched_day} {most_matched_city} میں {urdu_weather_description}"
+        else:
+            bot_response_to_send = f"{most_matched_day} کو {most_matched_city} میں {urdu_weather_description}"
+        
+        dispatcher.utter_message(text=bot_response_to_send)
+        
+        return [SlotSet("weather_id", weather_id)]
+
+
+class ActionDustStorm(Action):
+    
+    def name(self) -> Text:
+        return "action_utter_dust_storm"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        print("action_utter_dust_storm is called")
+        
+        # getting entity value of `city` and `day`
+        received_city = tracker.get_slot("city")
+        received_day = tracker.get_slot("day")
+        
+        print(received_city)
+        print(received_day)
+        
+        # Getting most matched day name with custom function
+        most_matched_day = get_matched_name(received_day, "day")[0]
+        
+        # Getting relative day-number for reteriving data from Database
+        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
+        print(day_no_for_DB)
+        
+        # Getting most matched city name with custom function
+        most_matched_city = get_matched_name(received_city, "city")[0]
+        
+        # Getting the GeoLocations' Document of `city` from Database
+        document = geo_locations_collection.find_one({'city': most_matched_city})
+        print(document)
+        
+        latitude = float(document['latitude'])
+        longitude = float(document['longitude'])
+        
+        # Getting Whole JSON/Document from DB of desired city
+        whole_JSON = weather_forecast_collection.find_one(
+            {
+                "lat": latitude,
+                "lon": longitude
+            }
+        )
+        # print(whole_JSON, type(whole_JSON))
+        
+        # Getting desired weather service
+        weather_id = whole_JSON['daily'][day_no_for_DB]['weather'][0]['id']
+        
+        urdu_weather_description = get_weather_description(weather_id)
+        
+        
+        if weather_id in [721, 731, 751, 761, 762, 771, 781]:
+            if day_no_for_DB == 0 or most_matched_day == "آج":
+                if weather_id in [721]:
+                    urdu_weather_description = f"{urdu_weather_description} ہوا ہے۔"
+                elif weather_id in [731, 771]:
+                    urdu_weather_description = f"{urdu_weather_description} ہیں۔"
+                elif weather_id in [751, 761, 762, 781]:
+                    urdu_weather_description = f"{urdu_weather_description} ہے۔"
+            else:
+                if weather_id in [721]:
+                    urdu_weather_description = f"{urdu_weather_description} ہوا گا۔"
+                elif weather_id in [731, 771]:
+                    urdu_weather_description = f"{urdu_weather_description} ہوں گے۔"
+                elif weather_id in [761]:
+                    urdu_weather_description = f"{urdu_weather_description} ہوگا۔"
+                elif weather_id in [751, 762, 781]:
+                    urdu_weather_description = f"{urdu_weather_description} ہوگی۔"
+        else:
+            if day_no_for_DB == 0 or most_matched_day == "آج":
+                urdu_weather_description = f"فضا پُر امن ہے۔"
+            else:
+                urdu_weather_description = f"فضا پُر امن ہوگی۔"
         
         
         if day_no_for_DB == 0 or most_matched_day == "آج":
             bot_response_to_send = f"{most_matched_day} {most_matched_city} میں {urdu_weather_description}"
         else:
-            bot_response_to_send = f"{most_matched_day} {most_matched_city} میں {urdu_weather_description}"
+            bot_response_to_send = f"{most_matched_day} کو {most_matched_city} میں {urdu_weather_description}"
         
         dispatcher.utter_message(text=bot_response_to_send)
-
+        
         return [SlotSet("weather_id", weather_id)]
-

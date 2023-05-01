@@ -115,6 +115,20 @@ slots:
     initial_value: null
     mappings:
     - type: custom
+  
+  rain_level:
+    type: any
+    influence_conversation: false
+    initial_value: null
+    mappings:
+    - type: custom
+
+  snow_level:
+    type: any
+    influence_conversation: false
+    initial_value: null
+    mappings:
+    - type: custom
 
 actions:
   - action_hello_world
@@ -129,6 +143,10 @@ actions:
   - action_utter_wind_speed
   - action_utter_uv_index
   - action_utter_weather
+  - action_utter_rain
+  - action_utter_snow
+  - action_utter_smog
+  - action_utter_dust_storm
 
 responses:
   utter_greet:
