@@ -183,3 +183,92 @@ stories:
   - intent: thanks
   - action: utter_thanks
 
+- story: Asking about Weather in general everything separatly (11)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - intent: asking_weather
+  - action: utter_ask_city_for_weather
+  - intent: telling_city
+  - action: utter_ask_day_for_weather
+  - intent: telling_day
+  - action: action_utter_weather
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks
+
+- story: Asking about any type of Rain everything separatly (12)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - intent: asking_about_rain
+  - action: utter_ask_city_for_weather
+  - intent: telling_city
+  - action: utter_ask_day_for_weather
+  - intent: telling_day
+  - action: action_utter_rain
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks
+
+- story: Asking about any type of Clouds everything separatly (13)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - intent: asking_about_clouds
+  - action: utter_ask_city_for_weather
+  - intent: telling_city
+  - action: utter_ask_day_for_weather
+  - intent: telling_day
+  - action: action_utter_clouds
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks
+
+- story: Asking about any type of Snow falling everything separatly (14)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - intent: asking_about_snow
+  - action: utter_ask_city_for_weather
+  - intent: telling_city
+  - action: utter_ask_day_for_weather
+  - intent: telling_day
+  - action: action_utter_snow
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks
+
+- story: Asking about any type of Smog everything separatly (15)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - intent: asking_about_smog
+  - action: utter_ask_city_for_weather
+  - intent: telling_city
+  - action: utter_ask_day_for_weather
+  - intent: telling_day
+  - action: action_utter_smog
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks
+
+- story: Asking about any type of Dust and Storms everything separatly (16)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - intent: asking_about_dust_storm
+  - action: utter_ask_city_for_weather
+  - intent: telling_city
+  - action: utter_ask_day_for_weather
+  - intent: telling_day
+  - action: action_utter_dust_storm
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks

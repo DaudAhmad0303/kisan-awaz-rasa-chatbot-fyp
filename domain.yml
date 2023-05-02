@@ -20,6 +20,11 @@ intents:
   - asking_wind_speed
   - asking_uv_index
   - asking_weather
+  - asking_about_rain
+  - asking_about_clouds
+  - asking_about_snow
+  - asking_about_smog
+  - asking_about_dust_storm
   - telling_city:
       use_entities: true
   - telling_day:
@@ -144,6 +149,7 @@ actions:
   - action_utter_uv_index
   - action_utter_weather
   - action_utter_rain
+  - action_utter_clouds
   - action_utter_snow
   - action_utter_smog
   - action_utter_dust_storm
