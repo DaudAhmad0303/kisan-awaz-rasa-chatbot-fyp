@@ -51,7 +51,7 @@ def get_weather_description(id: int) -> str:
         210: "ہلکی گرج چمک",                        # Light Thunderstorm
         211: "گرج چمک",                             # Thunderstorm
         212: "شدید گرج چمک",                        # Heavy Thunderstorm
-        221: "شدید گرج چمک والی طوفانی بارش",              # Ragged Thunderstorm
+        221: "شدید گرج چمک والی طوفانی بارش",       # Ragged Thunderstorm
         230: "گرج چمک کے ساتھ ہلکی بوندا باندی",    # Thunderstorm with light drizzle
         231: "گرج چمک کے ساتھ بوندا باندی",         # Thunderstorn with drizzle
         232: "گرج چمک کے ساتھ تیز بوندا باندی",     # Thunderstorm with heavy drizzle
@@ -1180,11 +1180,13 @@ class ActionDustStorm(Action):
             else:
                 urdu_weather_description = f"فضا پُر امن ہوگی۔"
         
+        # Getting desired weather service
+        wind_speed = whole_JSON['daily'][day_no_for_DB]['wind_speed']
         
         if day_no_for_DB == 0 or most_matched_day == "آج":
-            bot_response_to_send = f"{most_matched_day} {most_matched_city} میں {urdu_weather_description}"
+            bot_response_to_send = f"{most_matched_day} {most_matched_city} میں {urdu_weather_description} جبکہ ہوا {wind_speed} کلومیٹر فی گھنٹہ کی رفتار سے چل رہی ہے۔"
         else:
-            bot_response_to_send = f"{most_matched_day} کو {most_matched_city} میں {urdu_weather_description}"
+            bot_response_to_send = f"{most_matched_day} کو {most_matched_city} میں {urdu_weather_description} جبکہ ہوا {wind_speed} کلومیٹر فی گھنٹہ کی رفتار سے چلے گی۔"
         
         dispatcher.utter_message(text=bot_response_to_send)
         
