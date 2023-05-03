@@ -11,3 +11,8 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: Say thanks in return to any body saying thanks
+  steps:
+  - intent: thanks
+  - action: utter_thanks
