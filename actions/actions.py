@@ -176,7 +176,7 @@ class ActionMornTemp(Action):
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
-        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
+        day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
         print(day_no_for_DB)
         
         # Getting most matched city name with custom function
@@ -232,7 +232,7 @@ class ActionEveTemp(Action):
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
-        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
+        day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
         print(day_no_for_DB)
         
         # Getting most matched city name with custom function
@@ -288,7 +288,7 @@ class ActionNightTemp(Action):
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
-        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
+        day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
         print(day_no_for_DB)
         
         # Getting most matched city name with custom function
@@ -344,7 +344,7 @@ class ActionMinTemp(Action):
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
-        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
+        day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
         print(day_no_for_DB)
         
         # Getting most matched city name with custom function
@@ -400,7 +400,7 @@ class ActionMaxTemp(Action):
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
-        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
+        day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
         print(day_no_for_DB)
         
         # Getting most matched city name with custom function
@@ -456,7 +456,7 @@ class ActionMinMaxTemp(Action):
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
-        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
+        day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
         print(day_no_for_DB)
         
         # Getting most matched city name with custom function
@@ -513,7 +513,7 @@ class ActionHumidity(Action):
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
-        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
+        day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
         print(day_no_for_DB)
         
         # Getting most matched city name with custom function
@@ -569,7 +569,7 @@ class ActionAirPressure(Action):
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
-        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
+        day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
         print(day_no_for_DB)
         
         # Getting most matched city name with custom function
@@ -625,7 +625,7 @@ class ActionWindSpeed(Action):
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
-        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
+        day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
         print(day_no_for_DB)
         
         # Getting most matched city name with custom function
@@ -681,7 +681,7 @@ class ActionUVindex(Action):
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
-        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
+        day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
         print(day_no_for_DB)
         
         # Getting most matched city name with custom function
@@ -737,7 +737,7 @@ class ActionWeather(Action):
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
-        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
+        day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
         print(day_no_for_DB)
         
         # Getting most matched city name with custom function
@@ -826,7 +826,7 @@ class ActionRain(Action):
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
-        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
+        day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
         print(day_no_for_DB)
         
         # Getting most matched city name with custom function
@@ -904,7 +904,7 @@ class ActionSnow(Action):
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
-        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
+        day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
         print(day_no_for_DB)
         
         # Getting most matched city name with custom function
@@ -980,7 +980,7 @@ class ActionClouds(Action):
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
-        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
+        day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
         print(day_no_for_DB)
         
         # Getting most matched city name with custom function
@@ -1053,7 +1053,7 @@ class ActionSmog(Action):
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
-        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
+        day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
         print(day_no_for_DB)
         
         # Getting most matched city name with custom function
@@ -1129,7 +1129,7 @@ class ActionDustStorm(Action):
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
-        day_no_for_DB = relative_day_no(received_day, DB_update_time = time_DB_updated(formated=False))
+        day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
         print(day_no_for_DB)
         
         # Getting most matched city name with custom function
