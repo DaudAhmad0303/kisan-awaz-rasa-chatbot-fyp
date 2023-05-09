@@ -46,8 +46,8 @@ def insertData(cities_geolocation_df):
     # Fetching documents from weather_forecast_collection, if there inserted previously and 
     # storing all the cities name in a single list
     previous_docs = weather_forecast_collection.find({}, {"_id": 1})
+    # previous_docs_lst = list()
     previous_docs_lst = list(map(lambda dict1: dict1["_id"], previous_docs))
-    previous_docs_lst = list()
     count = 0
     for i in cities_geolocation_df.index:
         cityName = cities_geolocation_df.loc[i]['city']
@@ -90,6 +90,7 @@ def updateData(cities_geolocation_df):
         
         parsed_json["_id"] = cityName
         updated_doc = weather_forecast_collection.find_one_and_replace({"_id": cityName}, parsed_json)
+        # print(updated_doc)
         progress_bar(count+1, len(cities_geolocation_df))
         count += 1
         # break
@@ -125,7 +126,7 @@ def load_cities_from_csv():
         Pandas.DataFrame: DataFrame Containing Cities Geolocations
     """
     cities_geo_locations_df = pd.read_csv(
-        filepath_or_buffer = Path("D:\\Daud Ahmad\\FYP\\Data Collection\\cities geo locations.csv"),
+        filepath_or_buffer = Path("D:\\Daud Ahmad\\FYP\\Data Collection\\cities geo locations for 490.csv"),
         encoding = "UTF-8",
         header = 0
     )
