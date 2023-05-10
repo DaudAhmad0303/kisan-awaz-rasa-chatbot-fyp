@@ -272,3 +272,211 @@ stories:
   - action: utter_ask_for_next
   - intent: thanks
   - action: utter_thanks
+
+- story: Asking about Morning Temperature with city name provided (17)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - intent: asking_morn_temp_for_city
+  - action: utter_ask_day_for_weather
+  - intent: telling_day
+  - action: action_utter_morn_temp
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks
+
+- story: Asking about Evening Temperature with city name provided (18)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - intent: asking_eve_temp_for_city
+  - action: utter_ask_day_for_weather
+  - intent: telling_day
+  - action: action_utter_eve_temp
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks
+
+- story: Asking about Night Temperature with city name provided (19)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - intent: asking_night_temp_for_city
+  - action: utter_ask_day_for_weather
+  - intent: telling_day
+  - action: action_utter_night_temp
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks
+
+- story: Asking about Minimum Temperature with city name provided (20)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - intent: asking_min_temp_for_city
+  - action: utter_ask_day_for_weather
+  - intent: telling_day
+  - action: action_utter_min_temp
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks
+
+- story: Asking about Maximum Temperature with city name provided (21)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - intent: asking_max_temp_for_city
+  - action: utter_ask_day_for_weather
+  - intent: telling_day
+  - action: action_utter_max_temp
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks
+
+- story: Asking about Minimum and Maximum Temperature with city name provided (22)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - intent: asking_min_max_temp_for_city
+  - action: utter_ask_day_for_weather
+  - intent: telling_day
+  - action: action_utter_min_max_temp
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks
+
+- story: Asking about Humidity with city name provided (23)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - intent: asking_humidity_for_city
+  - action: utter_ask_day_for_weather
+  - intent: telling_day
+  - action: action_utter_humidity
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks
+
+- story: Asking about Air Pressure with city name provided (24)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - intent: asking_air_pressure_for_city
+  - action: utter_ask_day_for_weather
+  - intent: telling_day
+  - action: action_utter_air_pressure
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks
+
+- story: Asking about Wind Speed with city name provided (25)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - intent: asking_wind_speed_for_city
+  - action: utter_ask_day_for_weather
+  - intent: telling_day
+  - action: action_utter_wind_speed
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks
+
+- story: Asking about UV index with city name provided (26)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - intent: asking_uv_index_for_city
+  - action: utter_ask_day_for_weather
+  - intent: telling_day
+  - action: action_utter_uv_index
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks
+
+- story: Asking about Weather in general with city name provided (27)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - intent: asking_weather_for_city
+  - action: utter_ask_day_for_weather
+  - intent: telling_day
+  - action: action_utter_weather
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks
+
+- story: Asking about any type of Rain with city name provided (28)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - intent: asking_about_rain_for_city
+  - action: utter_ask_day_for_weather
+  - intent: telling_day
+  - action: action_utter_rain
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks
+
+- story: Asking about any type of Clouds with city name provided (29)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - intent: asking_about_clouds_for_city
+  - action: utter_ask_day_for_weather
+  - intent: telling_day
+  - action: action_utter_clouds
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks
+
+- story: Asking about any type of Snow falling with city name provided (30)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - intent: asking_about_snow_for_city
+  - action: utter_ask_day_for_weather
+  - intent: telling_day
+  - action: action_utter_snow
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks
+
+- story: Asking about any type of Smog with city name provided (31)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - intent: asking_about_smog_for_city
+  - action: utter_ask_day_for_weather
+  - intent: telling_day
+  - action: action_utter_smog
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks
+
+- story: Asking about any type of Dust and Storms with city name provided (32)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - intent: asking_about_dust_storm_for_city
+  - action: utter_ask_day_for_weather
+  - intent: telling_day
+  - action: action_utter_dust_storm
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks
