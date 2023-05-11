@@ -3,10 +3,6 @@ version: "3.1"
 intents:
   - greet
   - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
   - bot_challenge
   - thanks
   - asking_morn_temp
@@ -286,7 +282,6 @@ slots:
     - type: custom
 
 actions:
-  - action_hello_world
   - action_utter_morn_temp
   - action_utter_eve_temp
   - action_utter_night_temp
@@ -330,18 +325,8 @@ responses:
   - text: میں معذرت خواہ ہے ، مجھے اس کی سمجھ نہیں آئی۔ کیا آپ اپنے سوال کو دوبارہ الگ طریقے سے پوچھ سکتے ہیں؟
   - text: میں معافی چاہتا ہوں ، میں آپ کا سوال صیحح سے سمجھ نہیں پایا ہوں۔ کیا آپ اپنے سوال کے لیے دوسرے الفاظ استعمال کر سکتے ہیں؟
 
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
-
   utter_goodbye:
-  - text: "Bye"
+  - text: "خدا حافظ"
 
   utter_iamabot:
   - text: "میرا نام کسان آواز ہے۔ میں ایک چیٹ بوٹ  ہوں جو آپ کے ساتھ بات چیت کرتا ہے۔ اس کی مدد سے آپ کچھ بھی پوچھ سکتے ہیں، جیسے کہ موسم کی تبدیلیاں، کھیتی کے اوزار، اور کھادوں اور کیڑے مار ادویات کی قیمتیں وغیرہ۔"

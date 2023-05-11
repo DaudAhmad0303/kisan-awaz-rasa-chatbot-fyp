@@ -124,43 +124,6 @@ def get_weather_description(id: int) -> str:
         return " "
 
 
-"""class ActionSetGeoLocation(Action):
-    
-    def name(self) -> Text:
-        return "action_set_geo_location"
-
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        
-        received_city = next(tracker.get_slot("city"), None)
-        document = collection1.find_one({'city': received_city})
-        print(document)
-        latitude = float(document['latitude'])
-        longitude = float(document['longitude'])
-        
-        
-        # dispatcher.utter_message(text="Hello World!")
-
-        return []
-"""
-
-
-class ActionHelloWorld(Action):
-    
-    def name(self) -> Text:
-        return "action_hello_world"
-
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        print("action_hello_world is called")
-
-        dispatcher.utter_message(text="Hello World!")
-
-        return []
-
-
 class ActionMornTemp(Action):
     
     def name(self) -> Text:
