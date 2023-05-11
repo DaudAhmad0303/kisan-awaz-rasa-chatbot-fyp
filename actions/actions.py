@@ -29,6 +29,12 @@ geo_locations_collection = db["CityGeoLocations"]
 
 weather_forecast_collection = db["WeatherForecast"]
 
+fertilizer_prices_collection = db["FertilizerPrices"]
+
+pesticide_prices_collection = db["PesticidePrices"]
+
+machinery_prices_collection = db["MachineryPrices"]
+
 print("Database updated on", time_DB_updated())
 
 # allDatabases = client.list_database_names()
@@ -1191,3 +1197,99 @@ class ActionDustStorm(Action):
         dispatcher.utter_message(text=bot_response_to_send)
         
         return [SlotSet("weather_id", weather_id)]
+
+
+class ActionFertPrice(Action):
+    
+    def name(self) -> Text:
+        return "action_utter_fertilizer_price"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        print("action_utter_fertilizer_price is called")
+        
+        # getting entity value of `fertilizer`
+        fertilizer = tracker.get_slot("fertilizer")
+        
+        print(fertilizer)
+        
+        # Getting most matched fertilizer name with custom function
+        most_matched_fertilizer = get_matched_name(fertilizer, "fertilizer")[0]
+        
+        # Getting the Fertilizers' document from Database
+        document = fertilizer_prices_collection.find_one({'Fertilizer': most_matched_fertilizer})
+        print(document)
+        
+        # Getting desired weather service
+        fertilizer_price = document['Price']
+        
+        bot_response_to_send = f"{most_matched_fertilizer} کھاد کے ایک توٹے کی قیمت {fertilizer_price} روپے ہے"
+        
+        dispatcher.utter_message(text=bot_response_to_send)
+        
+        return [SlotSet("fertilizer_price", fertilizer_price)]
+
+
+class ActionPesticidePrice(Action):
+    
+    def name(self) -> Text:
+        return "action_utter_pesticide_price"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        print("action_utter_pesticide_price is called")
+        
+        # getting entity value of `pesticide`
+        pesticide = tracker.get_slot("pesticide")
+        
+        print(pesticide)
+        
+        # Getting most matched pesticide name with custom function
+        most_matched_pesticide = get_matched_name(pesticide, "pesticide")[0]
+        
+        # Getting the Fertilizers' document from Database
+        document = pesticide_prices_collection.find_one({'pesticide': most_matched_pesticide})
+        print(document)
+        
+        # Getting desired pesticide price
+        pesticide_price = document['price']
+        
+        bot_response_to_send = f"{most_matched_pesticide} دوائی کے ایک پیکٹ کی قیمت {pesticide_price} روپے ہے"
+        
+        dispatcher.utter_message(text=bot_response_to_send)
+        
+        return [SlotSet("pesticide_price", pesticide_price)]
+
+
+class ActionMachineryPrices(Action):
+    
+    def name(self) -> Text:
+        return "action_utter_machinery_price"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        print("action_utter_machinery_price is called")
+        
+        # getting entity value of `machinery` item
+        machinery = tracker.get_slot("machinery")
+        
+        print(machinery)
+        
+        # Getting most matched fertilizer name with custom function
+        most_matched_machinery = get_matched_name(machinery, "machinery")[0]
+        
+        # Getting the Fertilizers' document from Database
+        document = machinery_prices_collection.find_one({'machinery': most_matched_machinery})
+        print(document)
+        
+        # Getting desired weather service
+        machinery_price = document['price']
+        
+        bot_response_to_send = f"{most_matched_machinery} کھاد کے ایک توٹے کی قیمت {machinery_price} روپے ہے"
+        
+        dispatcher.utter_message(text=bot_response_to_send)
+        
+        return [SlotSet("machinery_price", machinery_price)]

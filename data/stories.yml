@@ -864,3 +864,36 @@ stories:
   - action: utter_ask_for_next
   - intent: thanks
   - action: utter_thanks
+
+- story: Asking about Fertilizer Price (65)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - intent: asking_about_fertilizer_price
+  - action: action_utter_fertilizer_price
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks
+
+- story: Asking about Pesticides Price (66)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - intent: asking_about_pesticide_price
+  - action: action_utter_pesticide_price
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks
+
+- story: Asking about Machinery Price (67)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - intent: asking_about_machinery_price
+  - action: action_utter_pesticide_price
+  - action: utter_ask_for_next
+  - intent: thanks
+  - action: utter_thanks

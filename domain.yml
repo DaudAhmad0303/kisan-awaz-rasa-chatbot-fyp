@@ -125,10 +125,19 @@ intents:
       use_entities: true
   - asking_about_dust_storm_for_day_and_city:
       use_entities: true
+  - asking_about_fertilizer_price:
+      use_entities: true
+  - asking_about_pesticide_price:
+      use_entities: true
+  - asking_about_machinery_price:
+      use_entities: true
 
 entities:
   - city
   - day
+  - fertilizer
+  - pesticide
+  - machinery
 
 slots:
   city:
@@ -147,6 +156,30 @@ slots:
     - type: from_entity
       entity: day
   
+  fertilizer:
+    type: text
+    initial_value: null
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: fertilizer
+  
+  pesticide:
+    type: text
+    initial_value: null
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: pesticide
+  
+  machinery:
+    type: text
+    initial_value: null
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: machinery
+
   morn_temp:
     type: any
     influence_conversation: false
@@ -230,6 +263,27 @@ slots:
     initial_value: null
     mappings:
     - type: custom
+  
+  fertilizer_price:
+    type: any
+    influence_conversation: false
+    initial_value: null
+    mappings:
+    - type: custom
+  
+  pesticide_price:
+    type: any
+    influence_conversation: false
+    initial_value: null
+    mappings:
+    - type: custom
+  
+  machinery_price:
+    type: any
+    influence_conversation: false
+    initial_value: null
+    mappings:
+    - type: custom
 
 actions:
   - action_hello_world
@@ -249,6 +303,9 @@ actions:
   - action_utter_snow
   - action_utter_smog
   - action_utter_dust_storm
+  - action_utter_fertilizer_price
+  - action_utter_pesticide_price
+  - action_utter_machinery_price
 
 responses:
   utter_greet:
