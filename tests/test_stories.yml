@@ -14,3 +14,28 @@
       کیا تم انسان ہو؟
     intent: bot_challenge
   - action: utter_iamabot
+
+- story: Asking about Morning Temperature everything separatly (1) Test Story
+  steps:
+  - user: |
+      السلام علیکم
+    intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - user: |
+      میں صبح کی ٹیمپریچر جاننا چاہتا ہوں
+    intent: asking_morn_temp
+  - action: utter_ask_city_for_weather
+  - user: |
+      لاہور
+    intent: telling_city
+  - action: utter_ask_day_for_weather
+  - user: |
+      آج کا
+    intent: telling_day
+  - action: action_utter_morn_temp
+  - action: utter_ask_for_next
+  - user: |
+      نہیں
+    intent: thanks
+  - action: utter_thanks
