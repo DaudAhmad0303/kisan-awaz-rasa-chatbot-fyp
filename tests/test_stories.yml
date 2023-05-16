@@ -39,3 +39,28 @@
       نہیں
     intent: thanks
   - action: utter_thanks
+
+- story: Asking about Evening Temperature everything separatly (2) Test Story
+  steps:
+  - user: |
+      السلام علیکم
+    intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_service
+  - user: |
+      دوپہر میں درجہ حرارت کتنا ہوگا
+    intent: asking_eve_temp
+  - action: utter_ask_city_for_weather
+  - user: |
+      میں کراچی میں ہوں
+    intent: telling_city
+  - action: utter_ask_day_for_weather
+  - user: |
+      پیر کا
+    intent: telling_day
+  - action: action_utter_eve_temp
+  - action: utter_ask_for_next
+  - user: |
+      نہیں
+    intent: thanks
+  - action: utter_thanks
