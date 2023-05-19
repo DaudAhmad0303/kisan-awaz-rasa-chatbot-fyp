@@ -19,7 +19,8 @@ from .fuzzyString import get_matched_name
 from .relativeDayNo import relative_day_no
 from openweathermap.APIToMongoDB import time_DB_updated
 
-client = mongo.MongoClient("mongodb://localhost:27017")
+# client = mongo.MongoClient("mongodb://localhost:27017")
+client = mongo.MongoClient("mongodb+srv://daudahmad:Daud1234@cluster0.xyn31tx.mongodb.net/")
 print(client)
 
 db = client["KisanAwaz"]       # City Geolocations DB

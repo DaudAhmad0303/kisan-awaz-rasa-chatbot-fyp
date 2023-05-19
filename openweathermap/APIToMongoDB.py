@@ -14,7 +14,8 @@ load_dotenv(dotenv_path=dotenv_path)
 OPEN_WEATHER_MAP_API = getenv("OPEN_WEATHER_MAP_API")
 
 # Database Client Created
-client = pymongo.MongoClient("mongodb://localhost:27017")
+# client = pymongo.MongoClient("mongodb://localhost:27017")
+client = pymongo.MongoClient("mongodb+srv://daudahmad:Daud1234@cluster0.xyn31tx.mongodb.net/")
 kisan_awaz_db = client["KisanAwaz"]
 
 def progress_bar(progress, total, color=colorama.Fore.YELLOW):
@@ -152,14 +153,14 @@ def time_DB_updated(formated = True):
     
 if __name__ == '__main__':
     
-    cities_geolocation_df = load_cities_from_csv()
-    # cities_geolocation_df = load_cities_from_db()
-    print(cities_geolocation_df.head())
-    # print("Last Updated", time_DB_updated())
+    # cities_geolocation_df = load_cities_from_csv()
+    cities_geolocation_df = load_cities_from_db()
+
+    print("Last Updated", time_DB_updated())
     
     # Un-comment any of the following line to insert or update data in database
     # insertData(cities_geolocation_df)
-    # updateData(cities_geolocation_df)
+    updateData(cities_geolocation_df)
     
     print("New", time_DB_updated())
     print("Data enter successfully in database...!")
