@@ -9,7 +9,7 @@ import pymongo
 import colorama
 from datetime import datetime
 
-dotenv_path = Path("D:\\Daud Ahmad\\FYP\\RASA Implementation\\code\\.env")
+dotenv_path = Path("..\\.env")
 load_dotenv(dotenv_path=dotenv_path)
 OPEN_WEATHER_MAP_API = getenv("OPEN_WEATHER_MAP_API")
 
@@ -126,7 +126,7 @@ def load_cities_from_csv():
         Pandas.DataFrame: DataFrame Containing Cities Geolocations
     """
     cities_geo_locations_df = pd.read_csv(
-        filepath_or_buffer = Path("D:\\Daud Ahmad\\FYP\\Data Collection\\cities geo locations for 490.csv"),
+        filepath_or_buffer = Path("cities geo locations for 490.csv"),
         encoding = "UTF-8",
         header = 0
     )
@@ -152,14 +152,14 @@ def time_DB_updated(formated = True):
     
 if __name__ == '__main__':
     
-    # cities_geolocation_df = load_cities_from_csv()
-    cities_geolocation_df = load_cities_from_db()
-    
-    print("Last Updated", time_DB_updated())
+    cities_geolocation_df = load_cities_from_csv()
+    # cities_geolocation_df = load_cities_from_db()
+    print(cities_geolocation_df.head())
+    # print("Last Updated", time_DB_updated())
     
     # Un-comment any of the following line to insert or update data in database
     # insertData(cities_geolocation_df)
-    updateData(cities_geolocation_df)
+    # updateData(cities_geolocation_df)
     
     print("New", time_DB_updated())
     print("Data enter successfully in database...!")
