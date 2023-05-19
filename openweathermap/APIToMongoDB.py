@@ -151,8 +151,6 @@ def time_DB_updated(formated = True):
             return "Date & Time: " + str(datetime.fromtimestamp(doc['daily'][0]['dt']))
     
 if __name__ == '__main__':
-
-    client = pymongo.MongoClient("mongodb://localhost:27017")
     
     # cities_geolocation_df = load_cities_from_csv()
     cities_geolocation_df = load_cities_from_db()
@@ -161,7 +159,7 @@ if __name__ == '__main__':
     
     # Un-comment any of the following line to insert or update data in database
     # insertData(cities_geolocation_df)
-    # updateData(cities_geolocation_df)
+    updateData(cities_geolocation_df)
     
     print("New", time_DB_updated())
     print("Data enter successfully in database...!")
