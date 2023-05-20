@@ -21,27 +21,27 @@ def get_matched_name(name :str, name_type: str, data = list()):
     data = list()
     if name_type == "city":
         # Reading the Cities files as list
-        with open("data_for_fuzzy_string\\CitiesList490.txt", encoding='UTF-8') as file:
+        with open("actions\\data_for_fuzzy_string\\CitiesList490.txt", encoding='UTF-8') as file:
             for val in file.readlines():
                 data.append(val.strip())
     elif name_type == "day":
         # Reading the Days files as list
-        with open("data_for_fuzzy_string\\DaysList.txt", encoding='UTF-8') as file:
+        with open("actions\\data_for_fuzzy_string\\DaysList.txt", encoding='UTF-8') as file:
             for val in file.readlines():
                 data.append(val.strip())
     elif name_type == "fertilizer":
         # Reading the Cities files as list
-        with open("data_for_fuzzy_string\\FertilizersList.txt", encoding='UTF-8') as file:
+        with open("actions\\data_for_fuzzy_string\\FertilizersList.txt", encoding='UTF-8') as file:
             for val in file.readlines():
                 data.append(val.strip())
     elif name_type == "pesticide":
         # Reading the Cities files as list
-        with open("data_for_fuzzy_string\\PesticidesLists.txt", encoding='UTF-8') as file:
+        with open("actions\\data_for_fuzzy_string\\PesticidesLists.txt", encoding='UTF-8') as file:
             for val in file.readlines():
                 data.append(val.strip())
     elif name_type == "machinery":
         # Reading the Cities files as list
-        with open("data_for_fuzzy_string\\MachineryList.txt", encoding='UTF-8') as file:
+        with open("actions\\data_for_fuzzy_string\\MachineryList.txt", encoding='UTF-8') as file:
             for val in file.readlines():
                 data.append(val.strip())
     
