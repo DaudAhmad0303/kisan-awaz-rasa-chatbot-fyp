@@ -2,6 +2,7 @@ from fuzzywuzzy import process
 from fuzzywuzzy import fuzz
 from pprint import pprint
 import json
+import logging
 
 
 def get_matched_name(name :str, name_type: str, data = list()):
@@ -55,7 +56,7 @@ def get_matched_name(name :str, name_type: str, data = list()):
     if matching_ratio >= 60:
         return sentence, matching_ratio
     else:
-        print("Got word:", sentence, matching_ratio)
+        logging.warning(f"Got word: '{sentence}', with matching ratio: '{matching_ratio}%'")
         # return None
         return sentence, matching_ratio
 

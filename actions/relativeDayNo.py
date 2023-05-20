@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 from pprint import pprint
+import logging
 
 def relative_day_no(day_name, DB_update_time = datetime.now().timestamp()):
     """An Intellegent Function that can return the day number
@@ -70,6 +71,7 @@ def relative_day_no(day_name, DB_update_time = datetime.now().timestamp()):
         return day_no
     
     if day_name not in relative_day or day_name == None:
+        logging.warning(f"Got wrong day name: {day_name}")
         return 0
     
     # # Get current TimeStamp

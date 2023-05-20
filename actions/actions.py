@@ -18,10 +18,11 @@ from pprint import pprint
 from .fuzzyString import get_matched_name
 from .relativeDayNo import relative_day_no
 from openweathermap.APIToMongoDB import time_DB_updated
+import logging
 
 # client = mongo.MongoClient("mongodb://localhost:27017")
 client = mongo.MongoClient("mongodb+srv://daudahmad:Daud1234@cluster0.xyn31tx.mongodb.net/")
-print(client)
+logging.info(client)
 
 db = client["KisanAwaz"]       # City Geolocations DB
 # db2 = client["weatherData"]     # API Fetched Weather Data DB
@@ -36,7 +37,7 @@ pesticide_prices_collection = db["PesticidePrices"]
 
 machinery_prices_collection = db["MachineryPrices"]
 
-print("Database updated on", time_DB_updated())
+logging.info(f"Database updated on {time_DB_updated()}")
 
 # allDatabases = client.list_database_names()
 # pprint(allDatabases)
@@ -122,6 +123,7 @@ def get_weather_description(id: int) -> str:
     if id in weather_description:
         return weather_description[id] 
     else:
+        logging.warning(f"Description for weather id '{id}' not found")
         return " "
 
 
@@ -133,28 +135,27 @@ class ActionMornTemp(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        print("action_utter_morn_temp is called")
         
         # getting entity value of `city` and `day`
         received_city = tracker.get_slot("city")
         received_day = tracker.get_slot("day")
         
-        print(received_city)
-        print(received_day)
+        logging.info(f"User uttered city name: {received_city}")
+        logging.info(f"User uttered day name: {received_day}")
         
         # Getting most matched day name with custom function
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
         day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
-        print(day_no_for_DB)
+        logging.info(f"Relative day number w.r.t DB update day: {day_no_for_DB}")
         
         # Getting most matched city name with custom function
         most_matched_city = get_matched_name(name = received_city, name_type="city")[0]
         
         # Getting the GeoLocations' Document of `city` from Database
         document = geo_locations_collection.find_one({'city': most_matched_city})
-        print(document)
+        logging.info(f"Geolocation document received from DB {document}")
         
         latitude = float(document['latitude'])
         longitude = float(document['longitude'])
@@ -189,28 +190,27 @@ class ActionEveTemp(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        print("action_utter_eve_temp is called")
         
         # getting entity value of `city` and `day`
         received_city = tracker.get_slot("city")
         received_day = tracker.get_slot("day")
         
-        print(received_city)
-        print(received_day)
+        logging.info(f"User uttered city name: {received_city}")
+        logging.info(f"User uttered day name: {received_day}")
         
         # Getting most matched day name with custom function
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
         day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
-        print(day_no_for_DB)
+        logging.info(f"Relative day number w.r.t DB update day: {day_no_for_DB}")
         
         # Getting most matched city name with custom function
         most_matched_city = get_matched_name(received_city, "city")[0]
         
         # Getting the GeoLocations' Document of `city` from Database
         document = geo_locations_collection.find_one({'city': most_matched_city})
-        print(document)
+        logging.info(f"Geolocation document received from DB {document}")
         
         latitude = float(document['latitude'])
         longitude = float(document['longitude'])
@@ -245,28 +245,27 @@ class ActionNightTemp(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        print("action_utter_night_temp is called")
         
         # getting entity value of `city` and `day`
         received_city = tracker.get_slot("city")
         received_day = tracker.get_slot("day")
         
-        print(received_city)
-        print(received_day)
+        logging.info(f"User uttered city name: {received_city}")
+        logging.info(f"User uttered day name: {received_day}")
         
         # Getting most matched day name with custom function
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
         day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
-        print(day_no_for_DB)
+        logging.info(f"Relative day number w.r.t DB update day: {day_no_for_DB}")
         
         # Getting most matched city name with custom function
         most_matched_city = get_matched_name(received_city, "city")[0]
         
         # Getting the GeoLocations' Document of `city` from Database
         document = geo_locations_collection.find_one({'city': most_matched_city})
-        print(document)
+        logging.info(f"Geolocation document received from DB {document}")
         
         latitude = float(document['latitude'])
         longitude = float(document['longitude'])
@@ -301,28 +300,27 @@ class ActionMinTemp(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        print("action_utter_min_temp is called")
         
         # getting entity value of `city` and `day`
         received_city = tracker.get_slot("city")
         received_day = tracker.get_slot("day")
         
-        print(received_city)
-        print(received_day)
+        logging.info(f"User uttered city name: {received_city}")
+        logging.info(f"User uttered day name: {received_day}")
         
         # Getting most matched day name with custom function
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
         day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
-        print(day_no_for_DB)
+        logging.info(f"Relative day number w.r.t DB update day: {day_no_for_DB}")
         
         # Getting most matched city name with custom function
         most_matched_city = get_matched_name(received_city, "city")[0]
         
         # Getting the GeoLocations' Document of `city` from Database
         document = geo_locations_collection.find_one({'city': most_matched_city})
-        print(document)
+        logging.info(f"Geolocation document received from DB {document}")
         
         latitude = float(document['latitude'])
         longitude = float(document['longitude'])
@@ -357,28 +355,27 @@ class ActionMaxTemp(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        print("action_utter_max_temp is called")
         
         # getting entity value of `city` and `day`
         received_city = tracker.get_slot("city")
         received_day = tracker.get_slot("day")
         
-        print(received_city)
-        print(received_day)
+        logging.info(f"User uttered city name: {received_city}")
+        logging.info(f"User uttered day name: {received_day}")
         
         # Getting most matched day name with custom function
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
         day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
-        print(day_no_for_DB)
+        logging.info(f"Relative day number w.r.t DB update day: {day_no_for_DB}")
         
         # Getting most matched city name with custom function
         most_matched_city = get_matched_name(received_city, "city")[0]
         
         # Getting the GeoLocations' Document of `city` from Database
         document = geo_locations_collection.find_one({'city': most_matched_city})
-        print(document)
+        logging.debug(document)
         
         latitude = float(document['latitude'])
         longitude = float(document['longitude'])
@@ -413,28 +410,27 @@ class ActionMinMaxTemp(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        print("action_utter_min_max_temp is called")
         
         # getting entity value of `city` and `day`
         received_city = tracker.get_slot("city")
         received_day = tracker.get_slot("day")
         
-        print(received_city)
-        print(received_day)
+        logging.info(f"User uttered city name: {received_city}")
+        logging.info(f"User uttered day name: {received_day}")
         
         # Getting most matched day name with custom function
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
         day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
-        print(day_no_for_DB)
+        logging.info(f"Relative day number w.r.t DB update day: {day_no_for_DB}")
         
         # Getting most matched city name with custom function
         most_matched_city = get_matched_name(received_city, "city")[0]
         
         # Getting the GeoLocations' Document of `city` from Database
         document = geo_locations_collection.find_one({'city': most_matched_city})
-        print(document)
+        logging.info(f"Geolocation document received from DB {document}")
         
         latitude = float(document['latitude'])
         longitude = float(document['longitude'])
@@ -470,28 +466,27 @@ class ActionHumidity(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        print("action_utter_humidity is called")
         
         # getting entity value of `city` and `day`
         received_city = tracker.get_slot("city")
         received_day = tracker.get_slot("day")
         
-        print(received_city)
-        print(received_day)
+        logging.info(f"User uttered city name: {received_city}")
+        logging.info(f"User uttered day name: {received_day}")
         
         # Getting most matched day name with custom function
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
         day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
-        print(day_no_for_DB)
+        logging.info(f"Relative day number w.r.t DB update day: {day_no_for_DB}")
         
         # Getting most matched city name with custom function
         most_matched_city = get_matched_name(received_city, "city")[0]
         
         # Getting the GeoLocations' Document of `city` from Database
         document = geo_locations_collection.find_one({'city': most_matched_city})
-        print(document)
+        logging.info(f"Geolocation document received from DB {document}")
         
         latitude = float(document['latitude'])
         longitude = float(document['longitude'])
@@ -526,28 +521,27 @@ class ActionAirPressure(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        print("action_utter_air_pressure is called")
         
         # getting entity value of `city` and `day`
         received_city = tracker.get_slot("city")
         received_day = tracker.get_slot("day")
         
-        print(received_city)
-        print(received_day)
+        logging.info(f"User uttered city name: {received_city}")
+        logging.info(f"User uttered day name: {received_day}")
         
         # Getting most matched day name with custom function
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
         day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
-        print(day_no_for_DB)
+        logging.info(f"Relative day number w.r.t DB update day: {day_no_for_DB}")
         
         # Getting most matched city name with custom function
         most_matched_city = get_matched_name(received_city, "city")[0]
         
         # Getting the GeoLocations' Document of `city` from Database
         document = geo_locations_collection.find_one({'city': most_matched_city})
-        print(document)
+        logging.info(f"Geolocation document received from DB {document}")
         
         latitude = float(document['latitude'])
         longitude = float(document['longitude'])
@@ -582,28 +576,27 @@ class ActionWindSpeed(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        print("action_utter_wind_speed is called")
         
         # getting entity value of `city` and `day`
         received_city = tracker.get_slot("city")
         received_day = tracker.get_slot("day")
         
-        print(received_city)
-        print(received_day)
+        logging.info(f"User uttered city name: {received_city}")
+        logging.info(f"User uttered day name: {received_day}")
         
         # Getting most matched day name with custom function
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
         day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
-        print(day_no_for_DB)
+        logging.info(f"Relative day number w.r.t DB update day: {day_no_for_DB}")
         
         # Getting most matched city name with custom function
         most_matched_city = get_matched_name(received_city, "city")[0]
         
         # Getting the GeoLocations' Document of `city` from Database
         document = geo_locations_collection.find_one({'city': most_matched_city})
-        print(document)
+        logging.info(f"Geolocation document received from DB {document}")
         
         latitude = float(document['latitude'])
         longitude = float(document['longitude'])
@@ -638,28 +631,27 @@ class ActionUVindex(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        print("action_utter_uv_index is called")
         
         # getting entity value of `city` and `day`
         received_city = tracker.get_slot("city")
         received_day = tracker.get_slot("day")
         
-        print(received_city)
-        print(received_day)
+        logging.info(f"User uttered city name: {received_city}")
+        logging.info(f"User uttered day name: {received_day}")
         
         # Getting most matched day name with custom function
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
         day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
-        print(day_no_for_DB)
+        logging.info(f"Relative day number w.r.t DB update: {day_no_for_DB}")
         
         # Getting most matched city name with custom function
         most_matched_city = get_matched_name(received_city, "city")[0]
         
         # Getting the GeoLocations' Document of `city` from Database
         document = geo_locations_collection.find_one({'city': most_matched_city})
-        print(document)
+        logging.info(f"Geolocation document received from DB {document}")
         
         latitude = float(document['latitude'])
         longitude = float(document['longitude'])
@@ -694,28 +686,27 @@ class ActionWeather(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        print("action_utter_weather is called")
         
         # getting entity value of `city` and `day`
         received_city = tracker.get_slot("city")
         received_day = tracker.get_slot("day")
         
-        print(received_city)
-        print(received_day)
+        logging.info(f"User uttered city name: {received_city}")
+        logging.info(f"User uttered day name: {received_day}")
         
         # Getting most matched day name with custom function
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
         day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
-        print(day_no_for_DB)
+        logging.info(f"Relative day number w.r.t DB update day: {day_no_for_DB}")
         
         # Getting most matched city name with custom function
         most_matched_city = get_matched_name(received_city, "city")[0]
         
         # Getting the GeoLocations' Document of `city` from Database
         document = geo_locations_collection.find_one({'city': most_matched_city})
-        print(document)
+        logging.info(f"Geolocation document received from DB {document}")
         
         latitude = float(document['latitude'])
         longitude = float(document['longitude'])
@@ -783,28 +774,27 @@ class ActionRain(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        print("action_utter_rain is called")
         
         # getting entity value of `city` and `day`
         received_city = tracker.get_slot("city")
         received_day = tracker.get_slot("day")
         
-        print(received_city)
-        print(received_day)
+        logging.info(f"User uttered city name: {received_city}")
+        logging.info(f"User uttered day name: {received_day}")
         
         # Getting most matched day name with custom function
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
         day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
-        print(day_no_for_DB)
+        logging.info(f"Relative day number w.r.t DB update day: {day_no_for_DB}")
         
         # Getting most matched city name with custom function
         most_matched_city = get_matched_name(received_city, "city")[0]
         
         # Getting the GeoLocations' Document of `city` from Database
         document = geo_locations_collection.find_one({'city': most_matched_city})
-        print(document)
+        logging.info(f"Geolocation document received from DB {document}")
         
         latitude = float(document['latitude'])
         longitude = float(document['longitude'])
@@ -861,28 +851,27 @@ class ActionSnow(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        print("action_utter_snow is called")
         
         # getting entity value of `city` and `day`
         received_city = tracker.get_slot("city")
         received_day = tracker.get_slot("day")
         
-        print(received_city)
-        print(received_day)
+        logging.info(f"User uttered city name: {received_city}")
+        logging.info(f"User uttered day name: {received_day}")
         
         # Getting most matched day name with custom function
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
         day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
-        print(day_no_for_DB)
+        logging.info(f"Relative day number w.r.t DB update day: {day_no_for_DB}")
         
         # Getting most matched city name with custom function
         most_matched_city = get_matched_name(received_city, "city")[0]
         
         # Getting the GeoLocations' Document of `city` from Database
         document = geo_locations_collection.find_one({'city': most_matched_city})
-        print(document)
+        logging.info(f"Geolocation document received from DB {document}")
         
         latitude = float(document['latitude'])
         longitude = float(document['longitude'])
@@ -937,28 +926,27 @@ class ActionClouds(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        print("action_utter_clouds is called")
         
         # getting entity value of `city` and `day`
         received_city = tracker.get_slot("city")
         received_day = tracker.get_slot("day")
         
-        print(received_city)
-        print(received_day)
+        logging.info(f"User uttered city name: {received_city}")
+        logging.info(f"User uttered day name: {received_day}")
         
         # Getting most matched day name with custom function
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
         day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
-        print(day_no_for_DB)
+        logging.info(f"Relative day number w.r.t DB update day: {day_no_for_DB}")
         
         # Getting most matched city name with custom function
         most_matched_city = get_matched_name(received_city, "city")[0]
         
         # Getting the GeoLocations' Document of `city` from Database
         document = geo_locations_collection.find_one({'city': most_matched_city})
-        print(document)
+        logging.info(f"Geolocation document received from DB {document}")
         
         latitude = float(document['latitude'])
         longitude = float(document['longitude'])
@@ -1010,28 +998,27 @@ class ActionSmog(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        print("action_utter_smog is called")
         
         # getting entity value of `city` and `day`
         received_city = tracker.get_slot("city")
         received_day = tracker.get_slot("day")
         
-        print(received_city)
-        print(received_day)
+        logging.info(f"User uttered city name: {received_city}")
+        logging.info(f"User uttered day name: {received_day}")
         
         # Getting most matched day name with custom function
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
         day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
-        print(day_no_for_DB)
+        logging.info(f"Relative day number w.r.t DB update day: {day_no_for_DB}")
         
         # Getting most matched city name with custom function
         most_matched_city = get_matched_name(received_city, "city")[0]
         
         # Getting the GeoLocations' Document of `city` from Database
         document = geo_locations_collection.find_one({'city': most_matched_city})
-        print(document)
+        logging.info(f"Geolocation document received from DB {document}")
         
         latitude = float(document['latitude'])
         longitude = float(document['longitude'])
@@ -1086,28 +1073,27 @@ class ActionDustStorm(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        print("action_utter_dust_storm is called")
         
         # getting entity value of `city` and `day`
         received_city = tracker.get_slot("city")
         received_day = tracker.get_slot("day")
         
-        print(received_city)
-        print(received_day)
+        logging.info(f"User uttered city name: {received_city}")
+        logging.info(f"User uttered day name: {received_day}")
         
         # Getting most matched day name with custom function
         most_matched_day = get_matched_name(received_day, "day")[0]
         
         # Getting relative day-number for reteriving data from Database
         day_no_for_DB = relative_day_no(most_matched_day, DB_update_time = time_DB_updated(formated=False))
-        print(day_no_for_DB)
+        logging.info(f"Relative day number w.r.t DB update day: {day_no_for_DB}")
         
         # Getting most matched city name with custom function
         most_matched_city = get_matched_name(received_city, "city")[0]
         
         # Getting the GeoLocations' Document of `city` from Database
         document = geo_locations_collection.find_one({'city': most_matched_city})
-        print(document)
+        logging.info(f"Geolocation document received from DB {document}")
         
         latitude = float(document['latitude'])
         longitude = float(document['longitude'])
@@ -1171,19 +1157,18 @@ class ActionFertPrice(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        print("action_utter_fertilizer_price is called")
         
         # getting entity value of `fertilizer`
         fertilizer = tracker.get_slot("fertilizer")
         
-        print(fertilizer)
+        logging.info(f"User uttered fertilizer name: {fertilizer}")
         
         # Getting most matched fertilizer name with custom function
         most_matched_fertilizer = get_matched_name(fertilizer, "fertilizer")[0]
         
         # Getting the Fertilizers' document from Database
         document = fertilizer_prices_collection.find_one({'Fertilizer': most_matched_fertilizer})
-        print(document)
+        logging.info(f"Fertilizer document received from DB {document}")
         
         # Getting desired weather service
         fertilizer_price = document['Price']
@@ -1203,19 +1188,18 @@ class ActionPesticidePrice(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        print("action_utter_pesticide_price is called")
         
         # getting entity value of `pesticide`
         pesticide = tracker.get_slot("pesticide")
         
-        print(pesticide)
+        logging.info(f"User uttered city name: {pesticide}")
         
         # Getting most matched pesticide name with custom function
         most_matched_pesticide = get_matched_name(pesticide, "pesticide")[0]
         
         # Getting the Fertilizers' document from Database
         document = pesticide_prices_collection.find_one({'pesticide': most_matched_pesticide})
-        print(document)
+        logging.info(f"Pesticide document received from DB {document}")
         
         # Getting desired pesticide price
         pesticide_price = document['price']
@@ -1235,19 +1219,18 @@ class ActionMachineryPrices(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        print("action_utter_machinery_price is called")
         
         # getting entity value of `machinery` item
         machinery = tracker.get_slot("machinery")
         
-        print(machinery)
+        logging.debug(f"Received machinery name: {machinery}")
         
         # Getting most matched fertilizer name with custom function
         most_matched_machinery = get_matched_name(machinery, "machinery")[0]
         
         # Getting the Fertilizers' document from Database
         document = machinery_prices_collection.find_one({'machinery': most_matched_machinery})
-        print(document)
+        logging.info(f"Machinery Document from DB: {document}")
         
         # Getting desired weather service
         machinery_price = document['price']
