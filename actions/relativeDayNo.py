@@ -29,7 +29,7 @@ def relative_day_no(day_name, DB_update_time = datetime.now().timestamp()):
         "سوموار" : "Monday",
         "منگل" : "Tuesday",
         "بدھ" : "Wednesday",
-        "جمعرات" : "Tursday",
+        "جمعرات" : "Thursday",
         "جمعہ" : "Friday",
         "ہفتہ" : "Saturday",
         "اتوار" : "Sunday",
