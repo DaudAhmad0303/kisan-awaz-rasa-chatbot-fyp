@@ -862,7 +862,7 @@ stories:
   - action: utter_greet
   - action: utter_ask_for_service
   - intent: asking_about_machinery_price
-  - action: action_utter_pesticide_price
+  - action: action_utter_machinery_price
   - action: utter_ask_for_next
   - intent: thanks
   - action: utter_thanks
