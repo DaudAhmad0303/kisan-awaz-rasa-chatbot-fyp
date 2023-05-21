@@ -1192,7 +1192,7 @@ class ActionPesticidePrice(Action):
         # getting entity value of `pesticide`
         pesticide = tracker.get_slot("pesticide")
         
-        logging.info(f"User uttered city name: {pesticide}")
+        logging.info(f"User uttered pesticide name: {pesticide}")
         
         # Getting most matched pesticide name with custom function
         most_matched_pesticide = get_matched_name(pesticide, "pesticide")[0]
@@ -1235,7 +1235,7 @@ class ActionMachineryPrices(Action):
         # Getting desired weather service
         machinery_price = document['price']
         
-        bot_response_to_send = f"{most_matched_machinery} کھاد کے ایک توٹے کی قیمت {machinery_price} روپے ہے"
+        bot_response_to_send = f"{most_matched_machinery} کی قیمت {machinery_price} روپے ہے"
         
         dispatcher.utter_message(text=bot_response_to_send)
         
