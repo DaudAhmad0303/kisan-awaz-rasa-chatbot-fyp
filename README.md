@@ -10,11 +10,11 @@ Introducing a revolutionary *Final Year Project* in the field of Computer Scienc
 
 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/xzHSMCObhH0" title="KISAN AWAZ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/xzHSMCObhH0" title="KISAN AWAZ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
 
 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/xzHSMCObhH0" frameborder="0" allowfullscreen></iframe>
+<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/xzHSMCObhH0" frameborder="0" allowfullscreen></iframe> -->
 
 
 
