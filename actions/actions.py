@@ -19,13 +19,18 @@ from .fuzzyString import get_matched_name
 from .relativeDayNo import relative_day_no
 from openweathermap.APIToMongoDB import time_DB_updated
 import logging
+from dotenv import load_dotenv
+from pathlib import Path
+from os import getenv
 
 # client = mongo.MongoClient("mongodb://localhost:27017")
-client = mongo.MongoClient("mongodb+srv://daudahmad:Daud1234@cluster0.xyn31tx.mongodb.net/")
-logging.info(client)
+dotenv_path = Path(".env")
+load_dotenv(dotenv_path=dotenv_path)
+REMOTE_DB_URL = getenv("REMOTE_DB_URL")
 
-db = client["KisanAwaz"]       # City Geolocations DB
-# db2 = client["weatherData"]     # API Fetched Weather Data DB
+client = mongo.MongoClient(REMOTE_DB_URL)
+logging.info(client)
+db = client["KisanAwaz"]       # Kisan Awaz DB
 
 geo_locations_collection = db["CityGeoLocations"]
 

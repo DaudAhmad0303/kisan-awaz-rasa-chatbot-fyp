@@ -15,7 +15,9 @@ OPEN_WEATHER_MAP_API = getenv("OPEN_WEATHER_MAP_API")
 
 # Database Client Created
 # client = pymongo.MongoClient("mongodb://localhost:27017")
-client = pymongo.MongoClient("mongodb+srv://daudahmad:Daud1234@cluster0.xyn31tx.mongodb.net/")
+REMOTE_DB_URL = getenv("REMOTE_DB_URL")
+client = pymongo.MongoClient(REMOTE_DB_URL)
+
 kisan_awaz_db = client["KisanAwaz"]
 
 def progress_bar(progress, total, color=colorama.Fore.YELLOW):
