@@ -19,6 +19,7 @@ In weather forecast, it can provide the weather conditions in the following cate
   - Humidity in the air
   - Air Pressure
   - Wind Speed
+  - Ultra Violet(UV) rays index
   - Whether it is raining or not
   - Whether it is snowing or not
   - Whether the sky is cloudy or not
@@ -38,11 +39,26 @@ Currently, it is providing the pricing information about [These Pesticides](acti
 Currently, it is providing the pricing information about [These Farming Machineries](actions/data_for_fuzzy_string/MachineryList.txt).
 
 Here're a few glimps of the conversation with the chatbot:
+![User asking about Smoke and Rain](https://github.com/DaudAhmad0303/kisan-awaz-rasa-chatbot-fyp/assets/73556387/4d975617-ec2a-42b9-8bc1-18d128642c37) | ![User asking Humidity](https://github.com/DaudAhmad0303/kisan-awaz-rasa-chatbot-fyp/assets/73556387/461c4abd-e377-453d-b40d-69845749f7f8) | ![User asking about Weather](https://github.com/DaudAhmad0303/kisan-awaz-rasa-chatbot-fyp/assets/73556387/fda71e51-d7cf-41ac-9087-4dc4c6f206ab)
+:-------------------------:|:-------------------------:|:-------------------------:
+User asking about Smoke and Rain       | User asking Humidity       | User asking about Weather
+
+---
+![User asking about Machinery Price](https://github.com/DaudAhmad0303/kisan-awaz-rasa-chatbot-fyp/assets/73556387/5f95b014-711a-4a0a-8eea-fcccd0bf8acf) | ![User asking about Fertilizer Price](https://github.com/DaudAhmad0303/kisan-awaz-rasa-chatbot-fyp/assets/73556387/6eebb5d2-5bdd-47f1-a3e3-8cffdb5ea8ea) | ![User asking Pesticide Price](https://github.com/DaudAhmad0303/kisan-awaz-rasa-chatbot-fyp/assets/73556387/2631e989-3090-4862-a586-4ef0127f6806)
+:-------------------------:|:-------------------------:|:-------------------------:
+User asking about Machinery Price       | User asking about Fertilizer Price       | User asking Pesticide Price
+
+<!--     Uploaded Photoes for Demo in Assessts
+![User asking about Smoke and Rain](https://github.com/DaudAhmad0303/kisan-awaz-rasa-chatbot-fyp/assets/73556387/4d975617-ec2a-42b9-8bc1-18d128642c37)
+![User asking Humidity](https://github.com/DaudAhmad0303/kisan-awaz-rasa-chatbot-fyp/assets/73556387/461c4abd-e377-453d-b40d-69845749f7f8)
+![User asking about Weather](https://github.com/DaudAhmad0303/kisan-awaz-rasa-chatbot-fyp/assets/73556387/fda71e51-d7cf-41ac-9087-4dc4c6f206ab)
+![User asking about Machinery Price](https://github.com/DaudAhmad0303/kisan-awaz-rasa-chatbot-fyp/assets/73556387/5f95b014-711a-4a0a-8eea-fcccd0bf8acf)
+![User asking about Fertilizer Price](https://github.com/DaudAhmad0303/kisan-awaz-rasa-chatbot-fyp/assets/73556387/6eebb5d2-5bdd-47f1-a3e3-8cffdb5ea8ea)
+![User asking Pesticide Price](https://github.com/DaudAhmad0303/kisan-awaz-rasa-chatbot-fyp/assets/73556387/2631e989-3090-4862-a586-4ef0127f6806) -->
 
 
 
-[![Demo](youtu.be/xzHSMCObhH0)](https://abc.com)
-
+<!-- [![Demo](youtu.be/xzHSMCObhH0)](https://abc.com) -->
 <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/xzHSMCObhH0" title="KISAN AWAZ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
 
 <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/xzHSMCObhH0" frameborder="0" allowfullscreen></iframe> -->
