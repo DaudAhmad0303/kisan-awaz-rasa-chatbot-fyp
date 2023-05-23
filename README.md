@@ -48,6 +48,18 @@ User asking about Smoke and Rain       | User asking Humidity       | User askin
 :-------------------------:|:-------------------------:|:-------------------------:
 User asking about Machinery Price       | User asking about Fertilizer Price       | User asking Pesticide Price
 
+
+## Author
+You can get in touch with me on my LinkedIn Profile:
+
+#### Daud Ahmad
+[![LinkedIn Link](https://img.shields.io/badge/Connect-daudahmad0303-blue.svg?logo=linkedin&longCache=true&style=social&label=Connect
+)](https://www.linkedin.com/in/daudahmad0303)
+
+You can also follow my GitHub Profile to stay updated about my latest projects: [![GitHub Follow](https://img.shields.io/badge/Connect-daudahmad0303-blue.svg?logo=Github&longCache=true&style=social&label=Follow)](https://github.com/daudahmad0303)
+
+If you liked the repo then kindly support it by giving it a star ⭐!
+
 <!--     Uploaded Photoes for Demo in Assessts
 ![User asking about Smoke and Rain](https://github.com/DaudAhmad0303/kisan-awaz-rasa-chatbot-fyp/assets/73556387/4d975617-ec2a-42b9-8bc1-18d128642c37)
 ![User asking Humidity](https://github.com/DaudAhmad0303/kisan-awaz-rasa-chatbot-fyp/assets/73556387/461c4abd-e377-453d-b40d-69845749f7f8)
