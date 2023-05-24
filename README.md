@@ -48,6 +48,25 @@ User asking about Smoke and Rain       | User asking Humidity       | User askin
 :-------------------------:|:-------------------------:|:-------------------------:
 User asking about Machinery Price       | User asking about Fertilizer Price       | User asking Pesticide Price
 
+## Installation and Running
+- Download and move inside the directory of repository
+```
+git clone https://github.com/DaudAhmad0303/kisan-awaz-rasa-chatbot-fyp.git
+cd kisan-awaz-rasa-chatbot-fyp
+```
+- All the requirments are given in the file requirements.txt. Install using pip:
+```
+pip install -r requirements.txt
+```
+- Connect your environment variables for **REMOTE_DB_URL** and **OPEN_WEATHER_MAP_API**.
+- Run the python file `openweathermap/APIToMongoDB.py` to fetch data from API and save it in Database.
+- Now, train your RASA model and run the NLU server and action server for RASA:
+```
+rasa train --force
+rasa run -m models --enable-api --cors "*" --auth-token None
+rasa run actions --debug
+```
+- If training has been done successfully, RASA server will be running at `localhost:5005`. Now, open this file inside webview `webView/index.html` in the browser and start conversation in ***URDU***.
 
 ## Author
 You can get in touch with me on my LinkedIn Profile:
