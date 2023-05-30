@@ -2,7 +2,7 @@ name: run openweathermap/APIToMongoDB.py
 
 on:
   schedule:
-    - cron: '50 13 * * 1,2,3,5' # At 14:00 on Monday, Wednesday, and Friday.
+    - cron: '40 16 * * 1,2,3,5' # At 14:00 on Monday, Wednesday, and Friday.
 
 jobs:
   build:
