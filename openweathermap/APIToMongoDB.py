@@ -8,14 +8,23 @@ import json
 import pymongo
 import colorama
 from datetime import datetime
+import os
 
-dotenv_path = Path("..\\.env")
-load_dotenv(dotenv_path=dotenv_path)
-OPEN_WEATHER_MAP_API = getenv("OPEN_WEATHER_MAP_API")
+# dotenv_path = Path("..\\.env")
+# load_dotenv(dotenv_path=dotenv_path)
+# OPEN_WEATHER_MAP_API = getenv("OPEN_WEATHER_MAP_API")
 
 # Database Client Created
 # client = pymongo.MongoClient("mongodb://localhost:27017")
-REMOTE_DB_URL = getenv("REMOTE_DB_URL")
+try:
+    REMOTE_DB_URL = os.environ["REMOTE_DB_URL"]
+    OPEN_WEATHER_MAP_API = os.environ["OPEN_WEATHER_MAP_API"]
+except KeyError:
+    REMOTE_DB_URL = "Token not available!"
+    OPEN_WEATHER_MAP_API = "Token not available!"
+    logger.info("Token not available!")
+
+# REMOTE_DB_URL = getenv("REMOTE_DB_URL")
 client = pymongo.MongoClient(REMOTE_DB_URL)
 
 kisan_awaz_db = client["KisanAwaz"]
