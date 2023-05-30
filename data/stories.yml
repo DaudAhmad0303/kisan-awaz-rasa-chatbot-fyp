@@ -12,6 +12,9 @@ stories:
   - intent: telling_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_morn_temp
   - action: utter_ask_for_next
   - intent: thanks
@@ -27,6 +30,9 @@ stories:
   - intent: telling_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_eve_temp
   - action: utter_ask_for_next
   - intent: thanks
@@ -42,6 +48,9 @@ stories:
   - intent: telling_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_night_temp
   - action: utter_ask_for_next
   - intent: thanks
@@ -57,6 +66,9 @@ stories:
   - intent: telling_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_min_temp
   - action: utter_ask_for_next
   - intent: thanks
@@ -72,6 +84,9 @@ stories:
   - intent: telling_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_max_temp
   - action: utter_ask_for_next
   - intent: thanks
@@ -87,6 +102,9 @@ stories:
   - intent: telling_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_min_max_temp
   - action: utter_ask_for_next
   - intent: thanks
@@ -102,6 +120,9 @@ stories:
   - intent: telling_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_humidity
   - action: utter_ask_for_next
   - intent: thanks
@@ -117,6 +138,9 @@ stories:
   - intent: telling_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_air_pressure
   - action: utter_ask_for_next
   - intent: thanks
@@ -132,6 +156,9 @@ stories:
   - intent: telling_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_wind_speed
   - action: utter_ask_for_next
   - intent: thanks
@@ -147,6 +174,9 @@ stories:
   - intent: telling_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_uv_index
   - action: utter_ask_for_next
   - intent: thanks
@@ -162,6 +192,9 @@ stories:
   - intent: telling_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_weather
   - action: utter_ask_for_next
   - intent: thanks
@@ -177,6 +210,9 @@ stories:
   - intent: telling_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_rain
   - action: utter_ask_for_next
   - intent: thanks
@@ -192,6 +228,9 @@ stories:
   - intent: telling_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_clouds
   - action: utter_ask_for_next
   - intent: thanks
@@ -207,6 +246,9 @@ stories:
   - intent: telling_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_snow
   - action: utter_ask_for_next
   - intent: thanks
@@ -222,6 +264,9 @@ stories:
   - intent: telling_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_smog
   - action: utter_ask_for_next
   - intent: thanks
@@ -237,6 +282,9 @@ stories:
   - intent: telling_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_dust_storm
   - action: utter_ask_for_next
   - intent: thanks
@@ -250,6 +298,9 @@ stories:
   - intent: asking_morn_temp_for_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_morn_temp
   - action: utter_ask_for_next
   - intent: thanks
@@ -263,6 +314,9 @@ stories:
   - intent: asking_eve_temp_for_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_eve_temp
   - action: utter_ask_for_next
   - intent: thanks
@@ -276,6 +330,9 @@ stories:
   - intent: asking_night_temp_for_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_night_temp
   - action: utter_ask_for_next
   - intent: thanks
@@ -289,6 +346,9 @@ stories:
   - intent: asking_min_temp_for_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_min_temp
   - action: utter_ask_for_next
   - intent: thanks
@@ -302,6 +362,9 @@ stories:
   - intent: asking_max_temp_for_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_max_temp
   - action: utter_ask_for_next
   - intent: thanks
@@ -315,6 +378,9 @@ stories:
   - intent: asking_min_max_temp_for_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_min_max_temp
   - action: utter_ask_for_next
   - intent: thanks
@@ -328,6 +394,9 @@ stories:
   - intent: asking_humidity_for_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_humidity
   - action: utter_ask_for_next
   - intent: thanks
@@ -341,6 +410,9 @@ stories:
   - intent: asking_air_pressure_for_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_air_pressure
   - action: utter_ask_for_next
   - intent: thanks
@@ -354,6 +426,9 @@ stories:
   - intent: asking_wind_speed_for_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_wind_speed
   - action: utter_ask_for_next
   - intent: thanks
@@ -367,6 +442,9 @@ stories:
   - intent: asking_uv_index_for_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_uv_index
   - action: utter_ask_for_next
   - intent: thanks
@@ -380,6 +458,9 @@ stories:
   - intent: asking_weather_for_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_weather
   - action: utter_ask_for_next
   - intent: thanks
@@ -393,6 +474,9 @@ stories:
   - intent: asking_about_rain_for_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_rain
   - action: utter_ask_for_next
   - intent: thanks
@@ -406,6 +490,9 @@ stories:
   - intent: asking_about_clouds_for_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_clouds
   - action: utter_ask_for_next
   - intent: thanks
@@ -419,6 +506,9 @@ stories:
   - intent: asking_about_snow_for_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_snow
   - action: utter_ask_for_next
   - intent: thanks
@@ -432,6 +522,9 @@ stories:
   - intent: asking_about_smog_for_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_smog
   - action: utter_ask_for_next
   - intent: thanks
@@ -445,6 +538,9 @@ stories:
   - intent: asking_about_dust_storm_for_city
   - action: utter_ask_day_for_weather
   - intent: telling_day
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_dust_storm
   - action: utter_ask_for_next
   - intent: thanks
@@ -458,6 +554,9 @@ stories:
   - intent: asking_morn_temp_for_day
   - action: utter_ask_city_for_weather
   - intent: telling_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_morn_temp
   - action: utter_ask_for_next
   - intent: thanks
@@ -471,6 +570,9 @@ stories:
   - intent: asking_eve_temp_for_day
   - action: utter_ask_city_for_weather
   - intent: telling_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_eve_temp
   - action: utter_ask_for_next
   - intent: thanks
@@ -484,6 +586,9 @@ stories:
   - intent: asking_night_temp_for_day
   - action: utter_ask_city_for_weather
   - intent: telling_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_night_temp
   - action: utter_ask_for_next
   - intent: thanks
@@ -497,6 +602,9 @@ stories:
   - intent: asking_min_temp_for_day
   - action: utter_ask_city_for_weather
   - intent: telling_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_min_temp
   - action: utter_ask_for_next
   - intent: thanks
@@ -510,6 +618,9 @@ stories:
   - intent: asking_max_temp_for_day
   - action: utter_ask_city_for_weather
   - intent: telling_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_max_temp
   - action: utter_ask_for_next
   - intent: thanks
@@ -523,6 +634,9 @@ stories:
   - intent: asking_min_max_temp_for_day
   - action: utter_ask_city_for_weather
   - intent: telling_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_min_max_temp
   - action: utter_ask_for_next
   - intent: thanks
@@ -536,6 +650,9 @@ stories:
   - intent: asking_humidity_for_day
   - action: utter_ask_city_for_weather
   - intent: telling_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_humidity
   - action: utter_ask_for_next
   - intent: thanks
@@ -549,6 +666,9 @@ stories:
   - intent: asking_air_pressure_for_day
   - action: utter_ask_city_for_weather
   - intent: telling_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_air_pressure
   - action: utter_ask_for_next
   - intent: thanks
@@ -562,6 +682,9 @@ stories:
   - intent: asking_wind_speed_for_day
   - action: utter_ask_city_for_weather
   - intent: telling_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_wind_speed
   - action: utter_ask_for_next
   - intent: thanks
@@ -575,6 +698,9 @@ stories:
   - intent: asking_uv_index_for_day
   - action: utter_ask_city_for_weather
   - intent: telling_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_uv_index
   - action: utter_ask_for_next
   - intent: thanks
@@ -588,6 +714,9 @@ stories:
   - intent: asking_weather_for_day
   - action: utter_ask_city_for_weather
   - intent: telling_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_weather
   - action: utter_ask_for_next
   - intent: thanks
@@ -601,6 +730,9 @@ stories:
   - intent: asking_about_rain_for_day
   - action: utter_ask_city_for_weather
   - intent: telling_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_rain
   - action: utter_ask_for_next
   - intent: thanks
@@ -614,6 +746,9 @@ stories:
   - intent: asking_about_clouds_for_day
   - action: utter_ask_city_for_weather
   - intent: telling_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_clouds
   - action: utter_ask_for_next
   - intent: thanks
@@ -627,6 +762,9 @@ stories:
   - intent: asking_about_snow_for_day
   - action: utter_ask_city_for_weather
   - intent: telling_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_snow
   - action: utter_ask_for_next
   - intent: thanks
@@ -640,6 +778,9 @@ stories:
   - intent: asking_about_smog_for_day
   - action: utter_ask_city_for_weather
   - intent: telling_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_smog
   - action: utter_ask_for_next
   - intent: thanks
@@ -653,6 +794,9 @@ stories:
   - intent: asking_about_dust_storm_for_day
   - action: utter_ask_city_for_weather
   - intent: telling_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_dust_storm
   - action: utter_ask_for_next
   - intent: thanks
@@ -664,6 +808,9 @@ stories:
   - action: utter_greet
   - action: utter_ask_for_service
   - intent: asking_morn_temp_for_day_and_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_morn_temp
   - action: utter_ask_for_next
   - intent: thanks
@@ -675,6 +822,9 @@ stories:
   - action: utter_greet
   - action: utter_ask_for_service
   - intent: asking_eve_temp_for_day_and_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_eve_temp
   - action: utter_ask_for_next
   - intent: thanks
@@ -686,6 +836,9 @@ stories:
   - action: utter_greet
   - action: utter_ask_for_service
   - intent: asking_night_temp_for_day_and_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_night_temp
   - action: utter_ask_for_next
   - intent: thanks
@@ -697,6 +850,9 @@ stories:
   - action: utter_greet
   - action: utter_ask_for_service
   - intent: asking_min_temp_for_day_and_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_min_temp
   - action: utter_ask_for_next
   - intent: thanks
@@ -708,6 +864,9 @@ stories:
   - action: utter_greet
   - action: utter_ask_for_service
   - intent: asking_max_temp_for_day_and_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_max_temp
   - action: utter_ask_for_next
   - intent: thanks
@@ -719,6 +878,9 @@ stories:
   - action: utter_greet
   - action: utter_ask_for_service
   - intent: asking_min_max_temp_for_day_and_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_min_max_temp
   - action: utter_ask_for_next
   - intent: thanks
@@ -730,6 +892,9 @@ stories:
   - action: utter_greet
   - action: utter_ask_for_service
   - intent: asking_humidity_for_day_and_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_humidity
   - action: utter_ask_for_next
   - intent: thanks
@@ -741,6 +906,9 @@ stories:
   - action: utter_greet
   - action: utter_ask_for_service
   - intent: asking_air_pressure_for_day_and_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_air_pressure
   - action: utter_ask_for_next
   - intent: thanks
@@ -752,6 +920,9 @@ stories:
   - action: utter_greet
   - action: utter_ask_for_service
   - intent: asking_wind_speed_for_day_and_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_wind_speed
   - action: utter_ask_for_next
   - intent: thanks
@@ -763,6 +934,9 @@ stories:
   - action: utter_greet
   - action: utter_ask_for_service
   - intent: asking_uv_index_for_day_and_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_uv_index
   - action: utter_ask_for_next
   - intent: thanks
@@ -774,6 +948,9 @@ stories:
   - action: utter_greet
   - action: utter_ask_for_service
   - intent: asking_weather_for_day_and_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_weather
   - action: utter_ask_for_next
   - intent: thanks
@@ -785,6 +962,9 @@ stories:
   - action: utter_greet
   - action: utter_ask_for_service
   - intent: asking_about_rain_for_day_and_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_rain
   - action: utter_ask_for_next
   - intent: thanks
@@ -796,6 +976,9 @@ stories:
   - action: utter_greet
   - action: utter_ask_for_service
   - intent: asking_about_clouds_for_day_and_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_clouds
   - action: utter_ask_for_next
   - intent: thanks
@@ -807,6 +990,9 @@ stories:
   - action: utter_greet
   - action: utter_ask_for_service
   - intent: asking_about_snow_for_day_and_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_snow
   - action: utter_ask_for_next
   - intent: thanks
@@ -818,6 +1004,9 @@ stories:
   - action: utter_greet
   - action: utter_ask_for_service
   - intent: asking_about_smog_for_day_and_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_smog
   - action: utter_ask_for_next
   - intent: thanks
@@ -829,6 +1018,9 @@ stories:
   - action: utter_greet
   - action: utter_ask_for_service
   - intent: asking_about_dust_storm_for_day_and_city
+  - slot_was_set:
+    - city
+    - day
   - action: action_utter_dust_storm
   - action: utter_ask_for_next
   - intent: thanks
